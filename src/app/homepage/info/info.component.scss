@@ -1,0 +1,27 @@
+@import '../../../assets/scss/variables';
+
+.info-module{
+    
+    .sub-heading {
+        padding-bottom: $spacer-2;
+        font-size: $font-xxl;
+        font-weight: 600;
+    }
+
+    .content {
+        font-size: $font-sm;
+        padding-bottom: $spacer-3;
+    }
+
+    .getin-btn {
+        background-color: $color-contrasting;
+        color: $color-primary;
+        padding: $spacer-md $spacer-4;
+        border-radius: 50px;
+        font-weight: 600;
+        
+        &:hover .btn-icon {
+            animation: rotateicon 1s ease-in-out;
+        }
+    }
+}

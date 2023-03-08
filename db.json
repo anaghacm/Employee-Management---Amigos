@@ -1,0 +1,41 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "abc",
+      "password": "abc",
+      "category": "hr"
+    },
+    {
+      "id": 2,
+      "username": "def",
+      "password": "def",
+      "category": "hr"
+    },
+    {
+      "id": 3,
+      "username": "ghi",
+      "password": "ghi",
+      "category": "emp"
+    },
+    {
+      "id": 4,
+      "username": "jkl",
+      "password": "jkl",
+      "category": "emp"
+    },
+    {
+      "id": 5,
+      "username": "mno",
+      "password": "mno",
+      "category": "emp"
+    }
+  ],
+  "employees": [
+    {
+      "id": 1,
+      "name": "John",
+      "designation": "Developer"
+    }
+  ]
+}

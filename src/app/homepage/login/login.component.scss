@@ -1,0 +1,85 @@
+@import '../../../assets/scss/variables';
+@import '../../../assets/scss/mixins';
+
+.login-module {
+    .login-form {
+        width: 60%;
+    }
+
+    .input-div {
+        padding: $spacer-1 $spacer-0;
+        height: 75px;
+    }
+
+    .form-control {
+        background-color: transparent;
+        color: $color-lightblue;
+        border-radius: 0;
+        border: none;
+        border-bottom: 1px solid $color-lightblue;
+        font-size: $font-sm;
+        letter-spacing: 1px;
+
+        &::placeholder {
+            color: $color-lightblue;
+            letter-spacing: 1px;
+        }
+
+        &:focus {
+            box-shadow: none;
+        }
+    }
+
+    .password-div {
+        position: relative;
+
+        .icon-password {
+            cursor: pointer;
+            position: absolute;
+            right: 15px;
+            top: 20px;
+            font-size: $font-xsm;
+        }
+    }
+
+    .btn-div {
+        padding-top: $spacer-2;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .btn-login {
+        background-color: $color-contrasting;
+        color: $color-primary;
+        padding: $spacer-md $spacer-3;
+        border-radius: 50px;
+        font-weight: 600;
+        letter-spacing: 1px;
+
+        &:hover .btn-icon {
+            animation: rotateicon 1s ease-in-out;
+        }
+    }
+
+    .forgot-password {
+        font-size: $font-xsm;
+        padding-top: $spacer-2;
+        color: $color-blue;
+    }
+    .warning-message{
+        color: $color-warning;
+        font-size: $font-xsm;
+    }
+}
+
+
+
+@include tablet{
+    .login-module{
+        .login-form{
+            width: 80%;
+        }
+    }
+}
