@@ -1,0 +1,193 @@
+@import '../../../assets/scss/variables';
+@import '../../../assets/scss/mixins';
+@import '../../../assets/scss/base';
+
+.card-module {
+    padding: $spacer-6 $spacer-0;
+
+    .single-profile {
+        position: relative;
+
+        .image-div {
+            width: 250px;
+        }
+
+        .border-div {
+            position: absolute;
+            left: 225px;
+            top: 30px;
+            height: 230px;
+            overflow: hidden;
+            z-index: 3;
+
+            &::after {
+                content: '';
+                position: absolute;
+                left: -1%;
+                z-index: -1;
+                top: -1%;
+                width: 102%;
+                height: 102%;
+                background-image: conic-gradient($color-contrasting 20deg,
+                        transparent 120deg);
+            }
+
+            &:hover::after {
+                animation: rotateborder 2s ease-in-out;
+            }
+        }
+
+        .text-div {
+            background-color: $color-white;
+            width: 98%;
+            height: 225px;
+            margin-left: 1%;
+            margin-top: 1%;
+            padding: $spacer-2;
+            text-align: center;
+            color: $color-primary;
+
+            p {
+                padding-bottom: $spacer-md;
+            }
+        }
+
+        .name-text {
+            font-size: $font-xl;
+            font-weight: 700;
+        }
+
+        .des-text {
+            font-size: $font-md;
+            color: $color-contrasting;
+        }
+
+        .emp-info {
+            text-align: left;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: flex-start;
+        }
+
+        .each-col {
+            padding: $spacer-1;
+        }
+
+        .icon {
+            color: $color-blue;
+            font-size: $font-xsm;
+
+            &:hover {
+                color: $color-primary;
+            }
+        }
+
+        .social-media {
+            opacity: 0.5;
+            padding: $spacer-0 $spacer-1;
+
+            &:hover {
+                opacity: 1;
+            }
+        }
+
+        .manage-emp {
+            position: absolute;
+            right: 10px;
+            bottom: -5px;
+        }
+
+        .btn {
+            opacity: 0.5;
+            font-size: $font-sm;
+
+            &:hover {
+                opacity: 1;
+            }
+        }
+
+        .btn-edit {
+            color: $color-primary;
+        }
+
+        .btn-delete {
+            color: red;
+        }
+    }
+}
+
+.modal {
+    color: $color-primary;
+
+    .modal-title {
+        font-size: $font-xl;
+        font-weight: 600;
+    }
+
+    .edit-form {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+        .input-div {
+            width: 30%;
+
+        }
+
+        .half-div {
+            width: 47%;
+        }
+    }
+
+    .form-control {
+        font-size: $font-sm;
+        border: 1px solid $color-blue;
+
+        &:focus {
+            box-shadow: none;
+        }
+    }
+
+    .btn {
+        background-color: $color-contrasting;
+        color: $color-primary;
+        padding: $spacer-md $spacer-2;
+        border-radius: 25px;
+        margin-left: $spacer-2;
+
+        &:hover {
+            background-color: $color-primary;
+            color: $color-contrasting;
+            box-shadow: rgba(0, 0, 0, 0.74) 0px 3px 2px;
+        }
+    }
+
+    .profilepic-upload {
+        background-color: $color-white;
+        color: #0000;
+    }
+
+    .profile-div {
+        position: relative;
+
+        .file-name {
+            color: $color-primary;
+            position: absolute;
+            left: 110px;
+            top: 42px;
+        }
+    }
+
+    .btn-div {
+        width: 100%;
+        padding: $spacer-2 $spacer-0;
+        text-align: right;
+    }
+}
+
+
+@keyframes rotateborder {
+    100% {
+        transform: rotate(-360deg);
+    }
+}

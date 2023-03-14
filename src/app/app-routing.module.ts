@@ -1,11 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { EmpHomeComponent } from './emp-dashboard/emp-home/emp-home.component';
 import { ForgotPasswordComponent } from './homepage/forgot-password/forgot-password.component';
 import { HomeComponent } from './homepage/home/home.component';
 import { InfoComponent } from './homepage/info/info.component';
 import { LoginComponent } from './homepage/login/login.component';
-import { HrHomeComponent } from './hr-dashboard/hr-home/hr-home.component';
 import { AuthGuardService } from './services/auth-guard.service';
 
 const routes: Routes = [
@@ -23,10 +21,10 @@ const routes: Routes = [
     ]
   },
   {
-    path:'emphome', component:EmpHomeComponent
+    path:'employees', loadChildren:()=> import('./employee/employee.module').then(m=>m.EmployeeModule), canActivate:[AuthGuardService]
   },
   {
-    path:'hrhome', component:HrHomeComponent
+    path:'hr', loadChildren:()=> import('./hr/hr.module').then(m=>m.HrModule), canActivate:[AuthGuardService]
   }
 ];
 

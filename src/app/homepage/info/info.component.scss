@@ -1,7 +1,6 @@
 @import '../../../assets/scss/variables';
 
-.info-module{
-    
+.info-module {
     .sub-heading {
         padding-bottom: $spacer-2;
         font-size: $font-xxl;
@@ -19,7 +18,7 @@
         padding: $spacer-md $spacer-4;
         border-radius: 50px;
         font-weight: 600;
-        
+
         &:hover .btn-icon {
             animation: rotateicon 1s ease-in-out;
         }

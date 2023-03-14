@@ -1,0 +1,65 @@
+<section class="card-module">
+    <div class="row row-cols-1 row-cols-lg-2 g-4 align-items-center">
+        <div class="col g-4 single-profile" *ngFor="let employee of employeesList">
+            <div class="image-div">
+                <img src="../../../assets/images/{{employee.image}}" class="w-100" alt="">
+            </div>
+            <div class="border-div">
+                <div class="text-div">
+                    <p class="name-text">{{employee.name | uppercase}}</p>
+                    <p class="des-text">{{employee.designation}}</p>
+                    <div class="emp-info">
+                        <div class="each-col">
+                            <p class="icon"><fa-icon [icon]="faUser"></fa-icon></p>
+                        </div>
+                        <div class="each-col">
+                            <p>{{employee.age}} Years</p>
+                            <p>{{employee.dob}}</p>
+                            <p>{{employee.gender}}</p>
+                            <p>{{employee.bloodgroup}}</p>
+                        </div>
+                        <div class="each-col">
+                            <p class="icon"><fa-icon [icon]="faAt"></fa-icon></p>
+                            <p class="icon"><fa-icon [icon]="faPhoneAlt"></fa-icon></p>
+                            <p class="icon"><fa-icon [icon]="faLocation"></fa-icon></p>
+                        </div>
+                        <div class="each-col">
+                            <p>{{employee.email}}</p>
+                            <p>{{employee.contact}}</p>
+                            <p>{{employee.address}}</p>
+                        </div>
+                    </div>
+                    <div class="smlinks">
+                        <a href="{{employee.fb}}" target="_blank" class="social-media"><img
+                                src="../../../assets/images/fb.png" width="12px" alt=""></a>
+                        <a href="{{employee.insta}}" target="_blank" class="social-media"><img
+                                src="../../../assets/images/instagram.png" width="12px" alt=""></a>
+                        <a href="{{employee.linkedin}}" target="_blank" class="social-media"><img
+                                src="../../../assets/images/linkedin.png" width="12px" alt=""></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="manage-emp">
+                <button class="btn btn-edit" data-bs-toggle="modal" data-bs-target="#editEmployee"
+                    (click)="getDetails(employee)"><fa-icon [icon]="faEdit"></fa-icon></button>
+                <button class="btn btn-delete" (click)="deleteEmployee(employee.id, employee.name)"><fa-icon
+                        [icon]="faTrash"></fa-icon></button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="modal fade" id="editEmployee" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <p class="modal-title fs-5" id="exampleModalLabel">Edit Employee Details</p>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <app-create-form [editEmployee]='editEmployee'></app-create-form>
+            </div>
+        </div>
+    </div>
+</div>

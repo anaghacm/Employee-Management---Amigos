@@ -1,0 +1,24 @@
+@import '../../../assets/scss/variables';
+@import '../../../assets/scss/mixins';
+@import '../../../assets/scss/base';
+
+.createemp-module {
+    padding: $spacer-6 $spacer-0;
+    // background-image: url('../../../assets/images/formbg.jpg');
+    // background-position: center;
+    // background-repeat: no-repeat;
+    // background-size: cover;
+
+    .heading {
+        padding: $spacer-4;
+        color: $color-primary;
+        text-align: center;
+    }
+
+    .heading-text {
+        font-size: $font-heading;
+        font-weight: 700;
+    }
+
+    
+}

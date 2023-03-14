@@ -9,10 +9,9 @@ import { InfoComponent } from './homepage/info/info.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ForgotPasswordComponent } from './homepage/forgot-password/forgot-password.component';
 import { HttpClientModule } from '@angular/common/http';
-import { HrHomeComponent } from './hr-dashboard/hr-home/hr-home.component';
-import { EmpHomeComponent } from './emp-dashboard/emp-home/emp-home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -21,8 +20,6 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     LoginComponent,
     InfoComponent,
     ForgotPasswordComponent,
-    HrHomeComponent,
-    EmpHomeComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +27,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

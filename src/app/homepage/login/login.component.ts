@@ -41,10 +41,10 @@ export class LoginComponent implements OnInit {
         if (user.length > 0) {
           localStorage.setItem('currentUser', JSON.stringify(userInfo));
           if (user[0].category == 'hr') {
-            this._router.navigateByUrl('hrhome');
+            this._router.navigateByUrl('hr');
           }
           else if (user[0].category == 'emp') {
-            this._router.navigateByUrl('emphome');
+            this._router.navigateByUrl('employees');
           }
         }
         else {

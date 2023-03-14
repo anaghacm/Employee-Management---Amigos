@@ -1,0 +1,15 @@
+@import '../../../assets/scss/variables';
+
+.emplist-module{
+    padding: $spacer-6 $spacer-0;
+
+    .heading{
+        padding: $spacer-2;
+        color: $color-primary;
+        text-align: center;
+    }
+    .heading-text{
+        font-size: $font-heading;
+        font-weight: 700;
+    }
+}
