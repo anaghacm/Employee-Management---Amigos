@@ -6,7 +6,7 @@
             </div>
             <div class="border-div">
                 <div class="text-div">
-                    <p class="name-text">{{employee.name | uppercase}}</p>
+                    <p class="name-text">{{employee.firstname | uppercase}} {{employee.lastname | uppercase}}</p>
                     <p class="des-text">{{employee.designation}}</p>
                     <div class="emp-info">
                         <div class="each-col">
@@ -41,6 +41,8 @@
             </div>
 
             <div class="manage-emp">
+                <button class="btn btn-edit" data-bs-toggle="modal" data-bs-target="#viewEmployee"
+                    (click)="viewDetails(employee)"><fa-icon [icon]="faUser"></fa-icon></button>
                 <button class="btn btn-edit" data-bs-toggle="modal" data-bs-target="#editEmployee"
                     (click)="getDetails(employee)"><fa-icon [icon]="faEdit"></fa-icon></button>
                 <button class="btn btn-delete" (click)="deleteEmployee(employee.id, employee.name)"><fa-icon
@@ -49,6 +51,86 @@
         </div>
     </div>
 </section>
+
+<div class="modal fade" id="viewEmployee" data-bs-backdrop="static" tabindex="-1" aria-labelledby="employeeName" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <p class="modal-title fs-5" id="viewemployeeName">{{viewName}}</p>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-3">
+                        <img id="viewprofilepic" src="{{viewImage}}" width="100%" alt="">
+                    </div>
+                    <div class="col-9 info-div">
+                        <div class="data-div">
+                            <p class="view-heading">Employee ID</p>
+                            <p>{{viewId}}</p>
+                        </div>
+                        <div class="data-div">
+                            <p class="view-heading">Age</p>
+                            <p>{{viewAge}}</p>
+                        </div>
+                        <div class="data-div">
+                            <p class="view-heading">Date of Birth</p>
+                            <p>{{viewDob}}</p>
+                        </div>
+                        <div class="data-div">
+                            <p class="view-heading">Blood Group</p>
+                            <p>{{viewBloodGroup}}</p>
+                        </div>
+                        <div class="data-div">
+                            <p class="view-heading">Gender</p>
+                            <p>{{viewGender}}</p>
+                        </div>
+                        <div class="data-div">
+                            <p class="view-heading">Email Address</p>
+                            <p>{{viewEmail}}</p>
+                        </div>
+                        <div class="data-div">
+                            <p class="view-heading">Contact</p>
+                            <p>{{viewContact}}</p>
+                        </div>
+                        <div class="data-div">
+                            <p class="view-heading">Address</p>
+                            <p>{{viewAddress}}</p>
+                        </div>
+                        <div class="data-div">
+                            <p class="view-heading">Educational Qualification</p>
+                            <p>{{viewQualification}}</p>
+                        </div>
+                        <div class="data-div">
+                            <p class="view-heading">Course / Subject</p>
+                            <p>{{viewCourse}}</p>
+                        </div>
+                        <div class="data-div">
+                            <p class="view-heading">University</p>
+                            <p>{{viewUniversity}}</p>
+                        </div>
+                        <div class="data-div">
+                            <p class="view-heading">Percentage</p>
+                            <p>{{viewPercentage}}</p>
+                        </div>
+                        <div class="data-div half-div">
+                            <p class="view-heading">Facebook Profile</p>
+                            <p>{{viewFbid}}</p>
+                        </div>
+                        <div class="data-div half-div">
+                            <p class="view-heading">Instagram Profile</p>
+                            <p>{{viewInstaid}}</p>
+                        </div>
+                        <div class="data-div">
+                            <p class="view-heading">LinkedIn Profile</p>
+                            <p>{{viewLinkedinid}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <div class="modal fade" id="editEmployee" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-scrollable">

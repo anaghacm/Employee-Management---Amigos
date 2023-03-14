@@ -118,7 +118,26 @@
 
 .modal {
     color: $color-primary;
-
+    .info-div{
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .data-div{
+        width: 30%;
+        font-size: $font-sm;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: flex-start;
+        padding: $spacer-1 $spacer-0;
+        &.half-div{
+            width: 50%;
+        }
+    }
+    .view-heading{
+        font-size: $font-md;
+        font-weight: 700;
+    }
     .modal-title {
         font-size: $font-xl;
         font-weight: 600;

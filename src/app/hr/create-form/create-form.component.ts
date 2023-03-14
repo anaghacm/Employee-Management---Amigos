@@ -44,7 +44,8 @@ export class CreateFormComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges) {
     if (changes['editEmployee'].currentValue != undefined) {
       const [day, month, year] = this.editEmployee.dob.split('/');
-      this.createEmployeeForm.get('firstname')?.setValue(this.editEmployee.name);
+      this.createEmployeeForm.get('firstname')?.setValue(this.editEmployee.firstname);
+      this.createEmployeeForm.get('lastname')?.setValue(this.editEmployee.lastname);
       this.createEmployeeForm.get('age')?.setValue(this.editEmployee.age);
       this.createEmployeeForm.get('dob')?.setValue(year + '-' + month + '-' + day);
       this.createEmployeeForm.get('bloodgroup')?.setValue(this.editEmployee.bloodgroup);
@@ -54,6 +55,10 @@ export class CreateFormComponent implements OnInit, OnChanges {
       this.createEmployeeForm.get('department')?.setValue(this.editEmployee.department);
       this.createEmployeeForm.get('designation')?.setValue(this.editEmployee.designation);
       this.createEmployeeForm.get('address')?.setValue(this.editEmployee.address);
+      this.createEmployeeForm.get('qualification')?.setValue(this.editEmployee.qualification);
+      this.createEmployeeForm.get('subject')?.setValue(this.editEmployee.course);
+      this.createEmployeeForm.get('university')?.setValue(this.editEmployee.university);
+      this.createEmployeeForm.get('percentage')?.setValue(this.editEmployee.percentage);
       this.createEmployeeForm.get('fbid')?.setValue(this.editEmployee.fb);
       this.createEmployeeForm.get('instaid')?.setValue(this.editEmployee.insta);
       this.createEmployeeForm.get('linkedinid')?.setValue(this.editEmployee.linkedin);
@@ -71,18 +76,22 @@ export class CreateFormComponent implements OnInit, OnChanges {
       const [year, month, day] = this.createEmployeeForm.value.dob.split('-');
       let userInfo = {
         id: this.editId,
-        name: this.createEmployeeForm.value.firstname,
+        firstname: this.createEmployeeForm.value.firstname,
+        lastname: this.createEmployeeForm.value.lastname,
         age: this.createEmployeeForm.value.age,
         dob: day + '/' + month + '/' + year,
-        image: this.fileName,
         bloodgroup: this.createEmployeeForm.value.bloodgroup,
         gender: this.createEmployeeForm.value.gender,
         email: this.createEmployeeForm.value.email,
         contact: this.createEmployeeForm.value.contact,
         address: this.createEmployeeForm.value.address,
+        image: this.fileName,
+        qualification: this.createEmployeeForm.value.qualification,
+        course: this.createEmployeeForm.value.subject,
+        university: this.createEmployeeForm.value.university,
+        percentage: this.createEmployeeForm.value.percentage,
         department: this.createEmployeeForm.value.department,
         designation: this.createEmployeeForm.value.designation,
-        active: 0,
         fb: this.createEmployeeForm.value.fbid,
         insta: this.createEmployeeForm.value.instaid,
         linkedin: this.createEmployeeForm.value.linkedinid

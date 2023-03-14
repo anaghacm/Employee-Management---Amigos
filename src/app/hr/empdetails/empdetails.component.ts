@@ -20,6 +20,25 @@ export class EmpdetailsComponent implements OnInit {
   public employeesList!: any;
   public editEmployee!:any;
 
+  public viewId!:number;
+  public viewName!:string;
+  public viewImage!:string;
+  public viewAge!:number;
+  public viewDob!:string;
+  public viewBloodGroup!:string;
+  public viewGender!:string;
+  public viewEmail!:string;
+  public viewContact!:string;
+  public viewAddress!:string;
+  public viewQualification!:string;
+  public viewCourse!:string;
+  public viewUniversity!:string;
+  public viewPercentage!:number;
+  public viewDepartment!:string;
+  public viewDesignation!:number;
+  public viewFbid!:string;
+  public viewInstaid!:string;
+  public viewLinkedinid!:string;
 
   constructor(private _api: ApiService, private _dialog: MatDialog, private _fb: FormBuilder) {
     this.getEmployees();
@@ -54,4 +73,25 @@ export class EmpdetailsComponent implements OnInit {
     this.editEmployee = employee;
   }
 
+  viewDetails(employee:any){
+    this.viewId=employee.id;
+    this.viewName=employee.firstname+' '+employee.lastname;
+    this.viewImage="../../../assets/images/"+employee.image;
+    this.viewAge=employee.age;
+    this.viewDob=employee.dob;
+    this.viewGender=employee.gender;
+    this.viewBloodGroup=employee.bloodgroup;
+    this.viewEmail=employee.email;
+    this.viewContact=employee.contact;
+    this.viewAddress=employee.address;
+    this.viewDepartment=employee.department;
+    this.viewDesignation=employee.designation;
+    this.viewQualification=employee.qualification;
+    this.viewUniversity=employee.university;
+    this.viewPercentage=employee.percentage;
+    this.viewCourse=employee.course;
+    this.viewFbid=employee.fb;
+    this.viewInstaid=employee.insta;
+    this.viewLinkedinid=employee.linkedin;
+  }
 }
