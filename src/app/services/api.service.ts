@@ -28,7 +28,9 @@ export class ApiService {
   deleteEmployee(id:number){
     return this._http.delete('http://localhost:3000/employees/'+id);
   }
-
+  addEmployee(userDetails:any){
+    return this._http.post('http://localhost:3000/employees', userDetails)
+  }
   editEmployee(userDetails:any){
     return this._http.put('http://localhost:3000/employees/'+userDetails.id,userDetails).pipe(
       tap(()=>{

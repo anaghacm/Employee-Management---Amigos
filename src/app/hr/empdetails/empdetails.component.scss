@@ -7,51 +7,69 @@
 
     .single-profile {
         position: relative;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: $spacer-3;
+
+        &:nth-of-type(even) {
+            flex-direction: row-reverse;
+
+            .text-div {
+                margin-right: -30px;
+            }
+            .manage-emp{
+                left: 50px;
+            }
+        }
+
 
         .image-div {
             width: 250px;
+            z-index: -10;
         }
 
-        .border-div {
-            position: absolute;
-            left: 225px;
-            top: 30px;
-            height: 230px;
-            overflow: hidden;
-            z-index: 3;
-
-            &::after {
-                content: '';
-                position: absolute;
-                left: -1%;
-                z-index: -1;
-                top: -1%;
-                width: 102%;
-                height: 102%;
-                background-image: conic-gradient($color-contrasting 20deg,
-                        transparent 120deg);
-            }
-
-            &:hover::after {
-                animation: rotateborder 2s ease-in-out;
-            }
-        }
 
         .text-div {
             background-color: $color-white;
-            width: 98%;
-            height: 225px;
-            margin-left: 1%;
-            margin-top: 1%;
-            padding: $spacer-2;
-            text-align: center;
-            color: $color-primary;
+            position: relative;
+            width: calc(100% - 250px);
+            height: 230px;
+            margin-left: -30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
 
             p {
                 padding-bottom: $spacer-md;
             }
-        }
 
+            &::before{
+                content: '';
+                position: absolute;
+                width: 100%;
+                height: 200px;
+                background-color: $color-contrasting;
+                transform: rotate(30deg);
+                
+            }
+            &:hover::before{
+                animation: rotateborder 4s linear infinite;
+            }
+            &::after{
+                content: '';
+                position: absolute;
+                background-color: $color-white;
+                inset: 2px;
+            }
+        }
+        .content{
+            z-index: 10;
+            width: 95%;
+            text-align: center;
+            color: $color-primary;
+        }
         .name-text {
             font-size: $font-xl;
             font-weight: 700;
@@ -72,10 +90,17 @@
         .each-col {
             padding: $spacer-1;
         }
-
+        .leave-col{
+            max-height: 130px;
+            height: 100%;
+            overflow-y: auto;
+            .leave-type{
+                font-weight: 700;
+            }
+        }
         .icon {
             color: $color-blue;
-            font-size: $font-xsm;
+            font-size: $font-sm;
 
             &:hover {
                 color: $color-primary;
@@ -93,8 +118,9 @@
 
         .manage-emp {
             position: absolute;
-            right: 10px;
-            bottom: -5px;
+            right: 50px;
+            bottom: 0;
+
         }
 
         .btn {
@@ -118,26 +144,7 @@
 
 .modal {
     color: $color-primary;
-    .info-div{
-        display: flex;
-        flex-wrap: wrap;
-    }
-    .data-div{
-        width: 30%;
-        font-size: $font-sm;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-evenly;
-        align-items: flex-start;
-        padding: $spacer-1 $spacer-0;
-        &.half-div{
-            width: 50%;
-        }
-    }
-    .view-heading{
-        font-size: $font-md;
-        font-weight: 700;
-    }
+
     .modal-title {
         font-size: $font-xl;
         font-weight: 600;
@@ -206,7 +213,10 @@
 
 
 @keyframes rotateborder {
+    0%{
+        transform: rotate(30deg);
+    }
     100% {
-        transform: rotate(-360deg);
+        transform: rotate(360deg);
     }
 }

@@ -5,16 +5,16 @@
         </div>
         <div class="input-div half-div">
             <label for="firstname" class="col-form-label">First Name</label>
-            <input type="text" name="firstname" formControlName="firstname" class="form-control" id="firstname">
+            <input type="text" pattern="[a-zA-Z\s]+" name="firstname" formControlName="firstname" class="form-control" id="firstname">
         </div>
         
         <div class="input-div half-div">
             <label for="lastname" class="col-form-label">Last Name</label>
-            <input type="text" name="lastname" formControlName="lastname" class="form-control" id="lastname">
+            <input type="text" pattern="[a-zA-Z\s]+" name="lastname" formControlName="lastname" class="form-control" id="lastname">
         </div>
         <div class="input-div">
             <label for="age" class="col-form-label">Age</label>
-            <input type="text" name="age" formControlName="age" class="form-control" id="age">
+            <input type="text" pattern="^[0-9]{2}$" name="age" formControlName="age" class="form-control" id="age">
         </div>
         <div class="input-div">
             <label for="dob" class="col-form-label">Date of Birth</label>
@@ -38,7 +38,7 @@
         </div>
         <div class="input-div">
             <label for="email" class="col-form-label">Email Address</label>
-            <input type="email" name="email" formControlName="email" class="form-control" id="email">
+            <input type="email" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" name="email" formControlName="email" class="form-control" id="email">
         </div>
         <div class="input-div">
             <label for="gender" class="col-form-label">Gender</label>
@@ -58,7 +58,7 @@
         </div>
         <div class="input-div">
             <label for="contact" class="col-form-label">Contact</label>
-            <input type="text" name="contact" formControlName="contact" class="form-control" id="contact">
+            <input type="text" pattern="^[0-9]{10}$" name="contact" formControlName="contact" class="form-control" id="contact">
         </div>
         <div class="input-div half-div">
             <label for="address" class="col-form-label">Address</label>
@@ -66,7 +66,7 @@
         </div>
         <div class="input-div half-div profile-div">
             <label for="profilepic" class="col-form-label">Profile Picture</label>
-            <input type="file" name="profilepic" formControlName="profilepic" value="i.jpeg"
+            <input type="file" accept="" name="profilepic" formControlName="profilepic" value="i.jpeg"
                 class="form-control profilepic-upload" id="profilepic" (change)="setFileName($event)">
                 <label class="file-name">{{fileName}}</label>
         </div>
@@ -77,20 +77,20 @@
         </div>
         <div class="input-div half-div">
             <label for="qualification" class="col-form-label">Highest Qualification</label>
-            <input type="text" name="qualification" formControlName="qualification" class="form-control" id="qualification">
+            <input type="text" pattern="^[a-zA-Z\s\.]*$" name="qualification" formControlName="qualification" class="form-control" id="qualification">
         </div>
         
         <div class="input-div half-div">
             <label for="subject" class="col-form-label">Course / Subject</label>
-            <input type="text" name="subject" formControlName="subject" class="form-control" id="subject">
+            <input type="text" pattern="^[a-zA-Z\s\.]*$" name="subject" formControlName="subject" class="form-control" id="subject">
         </div>
         <div class="input-div half-div">
             <label for="university" class="col-form-label">University</label>
-            <input type="text" name="university" formControlName="university" class="form-control" id="university">
+            <input type="text" pattern="^[a-zA-Z\s\.]*$" name="university" formControlName="university" class="form-control" id="university">
         </div>
         <div class="input-div half-div">
             <label for="percentage" class="col-form-label">Percentage</label>
-            <input type="text" name="percentage" formControlName="percentage" class="form-control" id="percentage">
+            <input type="text" pattern="^[0-9]{2}$" name="percentage" formControlName="percentage" class="form-control" id="percentage">
         </div>
 
 
@@ -112,7 +112,7 @@
         </div>
         <div class="input-div half-div">
             <label for="designation" class="col-form-label">Designation</label>
-            <input type="text" name="designation" formControlName="designation" class="form-control"
+            <input type="text" pattern="^[a-zA-Z\s\.]*$" name="designation" formControlName="designation" class="form-control"
                 id="designation">
         </div>
         
@@ -134,8 +134,8 @@
                 id="linkedinid">
         </div>
         <div class="btn-div">
-            <button type="button" class="btn btn-cancel"  data-bs-dismiss="modal">Cancel</button>
-            <button type="submit" class="btn btn-save" data-bs-dismiss="modal">Save Changes</button>
+            <button type="button" class="btn btn-cancel" (click)="resetForm()">Reset</button>
+            <button type="submit" class="btn btn-save">Save</button>
         </div>
     
     </form>

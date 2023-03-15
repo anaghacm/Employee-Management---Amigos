@@ -51,14 +51,25 @@
     }
     .form-control {
         font-size: $font-sm;
-        border: 1px solid $color-blue;
-    
+        border:  1px solid red;
     
         &:focus {
             box-shadow: none;
         }
+        &.ng-valid, &.ng-untouched{
+            border: 1px solid $color-blue;
+        }
+        &:disabled{
+            border: none;
+        }
     }
     
+    .col-form-label{
+        &::after{
+            content: '*';
+            color: red;
+        }
+    }
     .btn {
         background-color: $color-contrasting;
         color: $color-primary;

@@ -1,5 +1,6 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ApiService } from 'src/app/services/api.service';
 
 @Component({
@@ -13,8 +14,8 @@ export class CreateFormComponent implements OnInit, OnChanges {
   @Input() editEmployee!: any;
   public fileName: string = 'No files uploaded';
   public editId!: number;
-
-  constructor(private _fb: FormBuilder, private _api: ApiService) {
+  
+  constructor(private _fb: FormBuilder, private _api: ApiService, private _snackBar: MatSnackBar) {
   }
 
   ngOnInit(): void {
@@ -24,7 +25,7 @@ export class CreateFormComponent implements OnInit, OnChanges {
       age: ['', Validators.required],
       dob: ['', Validators.required],
       bloodgroup: ['select', Validators.required],
-      email: ['', Validators.required],
+      email: [''],
       gender: ['male', Validators.required],
       contact: ['', Validators.required],
       address: ['', Validators.required],
@@ -72,7 +73,8 @@ export class CreateFormComponent implements OnInit, OnChanges {
     }
   }
   saveEmpDetails() {
-    if(this.editId){
+    if (this.createEmployeeForm.valid && this.createEmployeeForm.value.bloodgroup != 'select' && this.createEmployeeForm.value.department != 'select') {
+      console.log("Savinggg")
       const [year, month, day] = this.createEmployeeForm.value.dob.split('-');
       let userInfo = {
         id: this.editId,
@@ -96,11 +98,34 @@ export class CreateFormComponent implements OnInit, OnChanges {
         insta: this.createEmployeeForm.value.instaid,
         linkedin: this.createEmployeeForm.value.linkedinid
       }
-      this._api.editEmployee(userInfo).subscribe((response) => {
-      })
+      if (this.editId) {
+        this._api.editEmployee(userInfo).subscribe((response) => {
+          console.log(response)
+        })
+      }
+      else {
+        this._api.addEmployee(userInfo).subscribe((response) => {
+          this._snackBar.open("New employee added successfully", "", {
+            duration: 2000,
+            panelClass: ['success-snackbar']
+          });
+          this.createEmployeeForm.reset({
+            bloodgroup: 'select',
+            gender: 'male',
+            department: 'select'
+          })
+          this.fileName = 'No files uploaded';
+        })
+      }
     }
-    else{
-      console.log("no data entered")
-    }
+  }
+
+  resetForm() {
+    this.createEmployeeForm.reset({
+      bloodgroup: 'select',
+      gender: 'male',
+      department: 'select'
+    });
+    this.fileName = 'No files uploaded';
   }
 }

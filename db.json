@@ -4,31 +4,36 @@
       "id": 1,
       "username": "abc",
       "password": "abc",
-      "category": "hr"
+      "category": "hr",
+      "active": 0
     },
     {
       "id": 2,
       "username": "def",
       "password": "def",
-      "category": "hr"
+      "category": "hr",
+      "active": 0
     },
     {
       "id": 3,
       "username": "ghi",
       "password": "ghi",
-      "category": "emp"
+      "category": "emp",
+      "active": 1
     },
     {
       "id": 4,
       "username": "jkl",
       "password": "jkl",
-      "category": "emp"
+      "category": "emp",
+      "active": 0
     },
     {
       "id": 5,
       "username": "mno",
       "password": "mno",
-      "category": "emp"
+      "category": "emp",
+      "active": 1
     }
   ],
   "employees": [
@@ -38,7 +43,7 @@
       "lastname": "Graham",
       "age": 28,
       "dob": "25/03/1992",
-      "bloodgroup": "B-",
+      "bloodgroup": "B+",
       "gender": "male",
       "email": "john@gmail.com",
       "contact": "9188721473",
@@ -47,12 +52,22 @@
       "qualification": "Post Graduation",
       "course": "ME CSE",
       "university": "CUSAT",
-      "percentage": 82,
+      "percentage": 80,
       "department": "Front End Development",
       "designation": "Associate Engineer",
       "fb": "https://www.facebook.com",
       "insta": "https://www.instagram.com",
-      "linkedin": "https://www.linkedin.com"
+      "linkedin": "https://www.linkedin.com",
+      "leavedetails": [
+        {
+          "type": "Sick",
+          "from": "03/03/2023",
+          "to": "04/03/2023",
+          "noofdays": 2,
+          "reason": "Medical Appointment",
+          "status": "Approved"
+        }
+      ]
     },
     {
       "id": 2,
@@ -74,7 +89,8 @@
       "designation": "HR Assistant",
       "fb": "https://www.facebook.com",
       "insta": "https://www.instagram.com",
-      "linkedin": "https://www.linkedin.com"
+      "linkedin": "https://www.linkedin.com",
+      "leavedetails": []
     },
     {
       "id": 3,
@@ -96,7 +112,8 @@
       "designation": "Junior Tester",
       "fb": "https://www.facebook.com",
       "insta": "https://www.instagram.com",
-      "linkedin": "https://www.linkedin.com"
+      "linkedin": "https://www.linkedin.com",
+      "leavedetails": []
     },
     {
       "id": 4,
@@ -118,7 +135,17 @@
       "designation": "Senior Developer",
       "fb": "https://www.facebook.com",
       "insta": "https://www.instagram.com",
-      "linkedin": "https://www.linkedin.com"
+      "linkedin": "https://www.linkedin.com",
+      "leavedetails": [
+        {
+          "type": "Casual",
+          "from": "14/03/2023",
+          "to": "14/03/2023",
+          "noofdays": 1,
+          "reason": "Personal Reasons",
+          "status": "Approved"
+        }
+      ]
     },
     {
       "id": 5,
@@ -128,7 +155,7 @@
       "dob": "25/03/1994",
       "bloodgroup": "A+",
       "gender": "female",
-      "email": "maria@gmail.com",
+      "email": "kurtis@gmail.com",
       "contact": "9188721473",
       "address": "12A, Church Road",
       "image": "5.jpg",
@@ -140,7 +167,8 @@
       "designation": "HR Manager",
       "fb": "https://www.facebook.com",
       "insta": "https://www.instagram.com",
-      "linkedin": "https://www.linkedin.com"
+      "linkedin": "https://www.linkedin.com",
+      "leavedetails": []
     },
     {
       "id": 6,
@@ -150,7 +178,7 @@
       "dob": "25/03/1996",
       "bloodgroup": "A+",
       "gender": "male",
-      "email": "john@gmail.com",
+      "email": "nicholas@gmail.com",
       "contact": "9188721473",
       "address": "12A, Church Road",
       "image": "1.jpg",
@@ -162,7 +190,8 @@
       "designation": "Associate Developer",
       "fb": "https://www.facebook.com",
       "insta": "https://www.instagram.com",
-      "linkedin": "https://www.linkedin.com"
+      "linkedin": "https://www.linkedin.com",
+      "leavedetails": []
     },
     {
       "id": 7,
@@ -172,7 +201,7 @@
       "dob": "25/03/1992",
       "bloodgroup": "O+",
       "gender": "male",
-      "email": "henry@gmail.com",
+      "email": "glen@gmail.com",
       "contact": "9188721473",
       "address": "12A, Church Road",
       "image": "2.jpg",
@@ -184,7 +213,8 @@
       "designation": "HR Assistant",
       "fb": "https://www.facebook.com",
       "insta": "https://www.instagram.com",
-      "linkedin": "https://www.linkedin.com"
+      "linkedin": "https://www.linkedin.com",
+      "leavedetails": []
     },
     {
       "id": 8,
@@ -194,7 +224,7 @@
       "dob": "25/03/1995",
       "bloodgroup": "B-",
       "gender": "female",
-      "email": "angel@gmail.com",
+      "email": "clementina@gmail.com",
       "contact": "9188721473",
       "address": "12A, Church Road",
       "image": "6.jpg",
@@ -206,17 +236,35 @@
       "designation": "Quality Analyst",
       "fb": "https://www.facebook.com",
       "insta": "https://www.instagram.com",
-      "linkedin": "https://www.linkedin.com"
+      "linkedin": "https://www.linkedin.com",
+      "leavedetails": [
+        {
+          "type": "Sick",
+          "from": "02/01/2023",
+          "to": "03/01/2023",
+          "noofdays": 2,
+          "reason": "Medical Appointment",
+          "status": "Approved"
+        },
+        {
+          "type": "Casual",
+          "from": "22/03/2023",
+          "to": "22/03/2023",
+          "noofdays": 1,
+          "reason": "Personal Reasons",
+          "status": "Pending"
+        }
+      ]
     },
     {
       "id": 9,
-      "firstname": "Lean",
+      "firstname": "Ervin",
       "lastname": "Dietrich",
       "age": 25,
       "dob": "02/08/1996",
       "bloodgroup": "AB-",
       "gender": "male",
-      "email": "frank@gmail.com",
+      "email": "ervin@gmail.com",
       "contact": "9188721473",
       "address": "12A, Church Road",
       "image": "3.jpg",
@@ -228,17 +276,18 @@
       "designation": "Senior Developer",
       "fb": "https://www.facebook.com",
       "insta": "https://www.instagram.com",
-      "linkedin": "https://www.linkedin.com"
+      "linkedin": "https://www.linkedin.com",
+      "leavedetails": []
     },
     {
       "id": 10,
-      "firstname": "Ervina",
+      "firstname": "Leanna",
       "lastname": "Lebsack",
       "age": 27,
       "dob": "25/03/1994",
       "bloodgroup": "A+",
       "gender": "female",
-      "email": "maria@gmail.com",
+      "email": "leanna@gmail.com",
       "contact": "9188721473",
       "address": "12A, Church Road",
       "image": "4.jpg",
@@ -250,7 +299,55 @@
       "designation": "HR Manager",
       "fb": "https://www.facebook.com",
       "insta": "https://www.instagram.com",
-      "linkedin": "https://www.linkedin.com"
+      "linkedin": "https://www.linkedin.com",
+      "leavedetails": [
+        {
+          "type": "Sick",
+          "from": "10/03/2023",
+          "to": "12/03/2023",
+          "noofdays": 3,
+          "reason": "Admitted in hospital",
+          "status": "Approved"
+        }
+      ]
+    }
+  ],
+  "leavedetails": [
+    {
+      "employeeid": 1,
+      "type": "Sick",
+      "from": "03/03/2023",
+      "to": "04/03/2023",
+      "noofdays": 2,
+      "reason": "Medical Appointment",
+      "status": "Approved"
+    },
+    {
+      "employeeid": 4,
+      "type": "Casual",
+      "from": "14/03/2023",
+      "to": "14/03/2023",
+      "noofdays": 1,
+      "reason": "Personal Reasons",
+      "status": "Approved"
+    },
+    {
+      "employeeid": 5,
+      "type": "Sick",
+      "from": "10/03/2023",
+      "to": "12/03/2023",
+      "noofdays": 3,
+      "reason": "Admitted in hospital",
+      "status": "Approved"
+    },
+    {
+      "employeeid": 1,
+      "type": "Casual",
+      "from": "22/03/2023",
+      "to": "22/03/2023",
+      "noofdays": 1,
+      "reason": "Personal Reasons",
+      "status": "Pending"
     }
   ]
 }
