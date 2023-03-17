@@ -30,16 +30,12 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.valid) {
       let username = this.loginForm.value.username;
       let password = this.loginForm.value.password;
-      let userInfo = {
-        username,
-        password
-      }
       this._api.getUsers().subscribe((response: any) => {
         let user = response.filter((user: any) => {
           return user.username == username && user.password == password
         })
         if (user.length > 0) {
-          localStorage.setItem('currentUser', JSON.stringify(userInfo));
+          localStorage.setItem('currentUser', JSON.stringify(user[0]));
           if (user[0].category == 'hr') {
             this._router.navigateByUrl('hr');
           }

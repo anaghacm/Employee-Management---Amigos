@@ -9,33 +9,54 @@ export class ApiService {
 
   private _refreshRequired = new Subject<void>();
 
-  constructor(private _http:HttpClient) { }
+  constructor(private _http: HttpClient) { }
 
-  get RefreshRequired(){
+  get RefreshRequired() {
     return this._refreshRequired;
   }
-  getUsers(){
+  getUsers() {
     return this._http.get('http://localhost:3000/users');
   }
 
-  resetPassword(userDetails:any){
-    return this._http.put('http://localhost:3000/users/'+userDetails.id,userDetails);
+  resetPassword(userDetails: any) {
+    return this._http.patch('http://localhost:3000/users/' + userDetails.id, userDetails);
   }
 
-  getEmployees(){
+  getEmployees() {
     return this._http.get('http://localhost:3000/employees');
   }
-  deleteEmployee(id:number){
-    return this._http.delete('http://localhost:3000/employees/'+id);
+
+  deleteEmployee(id: number) {
+    return this._http.delete('http://localhost:3000/employees/' + id);
   }
-  addEmployee(userDetails:any){
+
+  addEmployee(userDetails: any) {
     return this._http.post('http://localhost:3000/employees', userDetails)
   }
-  editEmployee(userDetails:any){
-    return this._http.put('http://localhost:3000/employees/'+userDetails.id,userDetails).pipe(
-      tap(()=>{
+
+  editEmployee(userDetails: any) {
+    return this._http.put('http://localhost:3000/employees/' + userDetails.id, userDetails).pipe(
+      tap(() => {
         this.RefreshRequired.next();
       })
     );
+  }
+
+  updatePersonalInfo(userDetails: any) {
+    return this._http.patch('http://localhost:3000/employees/' + userDetails.id, userDetails).pipe(
+      tap(() => {
+        this.RefreshRequired.next();
+      })
+    );
+  }
+  updateProfilePic(userDetails:any){
+    return this._http.patch('http://localhost:3000/employees/' + userDetails.id, userDetails).pipe(
+      tap(() => {
+        this.RefreshRequired.next();
+      })
+    );
+  }
+  getEmployeeById(id: number) {
+    return this._http.get('http://localhost:3000/employees/' + id);
   }
 }

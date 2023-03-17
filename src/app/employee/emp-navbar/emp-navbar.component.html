@@ -1,0 +1,22 @@
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+        <a class="navbar-brand" routerLink="/employees"><img src="../../../assets/images/white-logo.png" width="150px" alt=""></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02"
+            aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" routerLink="/employees" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="leavapply" routerLinkActive="active">Leave Application</a>
+                </li>
+                <li class="nav-item">
+                    <button class="nav-link btn-logout" (click)="logout()">Logout</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

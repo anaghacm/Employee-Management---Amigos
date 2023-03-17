@@ -1,0 +1,28 @@
+@import '../../../assets/scss/variables';
+
+.navbar{
+    background-color: $color-primary;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    // width: 100%;
+    
+    .nav-link{
+        color: $color-white;
+        font-size: $font-md;
+        padding-left: $spacer-2;
+
+        &:hover{
+            color: $color-contrasting;
+        }
+    }
+
+    .active{
+        color: $color-contrasting;
+    }
+    .btn-logout{
+        background-color: transparent;
+        color: $color-white;
+        border: none;
+    }
+}

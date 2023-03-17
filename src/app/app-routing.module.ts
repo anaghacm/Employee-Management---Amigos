@@ -5,6 +5,7 @@ import { HomeComponent } from './homepage/home/home.component';
 import { InfoComponent } from './homepage/info/info.component';
 import { LoginComponent } from './homepage/login/login.component';
 import { AuthGuardService } from './services/auth-guard.service';
+import { DeactivateGuardService } from './services/deactivate-guard.service';
 
 const routes: Routes = [
   {
@@ -21,10 +22,10 @@ const routes: Routes = [
     ]
   },
   {
-    path:'employees', loadChildren:()=> import('./employee/employee.module').then(m=>m.EmployeeModule), canActivate:[AuthGuardService]
+    path:'employees', loadChildren:()=> import('./employee/employee.module').then(m=>m.EmployeeModule), canActivate:[AuthGuardService], canDeactivate:[DeactivateGuardService]
   },
   {
-    path:'hr', loadChildren:()=> import('./hr/hr.module').then(m=>m.HrModule), canActivate:[AuthGuardService]
+    path:'hr', loadChildren:()=> import('./hr/hr.module').then(m=>m.HrModule), canActivate:[AuthGuardService], canDeactivate:[DeactivateGuardService]
   }
 ];
 

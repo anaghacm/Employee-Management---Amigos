@@ -45,11 +45,15 @@ export class ForgotPasswordComponent implements OnInit {
           if (user.length > 0) {
             let id = user[0].id;
             let category = user[0].category;
-            let userInfo = {
+            // let userInfo = {
+            //   id,
+            //   username,
+            //   password,
+            //   category
+            // }
+            let userInfo={
               id,
-              username,
-              password,
-              category
+              password
             }
             this._api.resetPassword(userInfo).subscribe((response) => {
               this._snackBar.open("Password updated successfully", "", {

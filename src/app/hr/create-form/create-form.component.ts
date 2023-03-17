@@ -14,6 +14,7 @@ export class CreateFormComponent implements OnInit, OnChanges {
   @Input() editEmployee!: any;
   public fileName: string = 'No files uploaded';
   public editId!: number;
+  public leaveDetails!:any;
   
   constructor(private _fb: FormBuilder, private _api: ApiService, private _snackBar: MatSnackBar) {
   }
@@ -25,11 +26,11 @@ export class CreateFormComponent implements OnInit, OnChanges {
       age: ['', Validators.required],
       dob: ['', Validators.required],
       bloodgroup: ['select', Validators.required],
-      email: [''],
+      email: ['', Validators.required],
       gender: ['male', Validators.required],
       contact: ['', Validators.required],
       address: ['', Validators.required],
-      profilepic: ['', Validators.required],
+      profilepic: [''],
       qualification: ['', Validators.required],
       subject: ['', Validators.required],
       university: ['', Validators.required],
@@ -44,11 +45,10 @@ export class CreateFormComponent implements OnInit, OnChanges {
   }
   ngOnChanges(changes: SimpleChanges) {
     if (changes['editEmployee'].currentValue != undefined) {
-      const [day, month, year] = this.editEmployee.dob.split('/');
       this.createEmployeeForm.get('firstname')?.setValue(this.editEmployee.firstname);
       this.createEmployeeForm.get('lastname')?.setValue(this.editEmployee.lastname);
       this.createEmployeeForm.get('age')?.setValue(this.editEmployee.age);
-      this.createEmployeeForm.get('dob')?.setValue(year + '-' + month + '-' + day);
+      this.createEmployeeForm.get('dob')?.setValue(this.editEmployee.dob);
       this.createEmployeeForm.get('bloodgroup')?.setValue(this.editEmployee.bloodgroup);
       this.createEmployeeForm.get('gender')?.setValue(this.editEmployee.gender);
       this.createEmployeeForm.get('email')?.setValue(this.editEmployee.email);
@@ -65,6 +65,7 @@ export class CreateFormComponent implements OnInit, OnChanges {
       this.createEmployeeForm.get('linkedinid')?.setValue(this.editEmployee.linkedin);
       this.fileName = this.editEmployee.image;
       this.editId = this.editEmployee.id;
+      this.leaveDetails=this.editEmployee.leavedetails;
     }
   }
   setFileName(event: any) {
@@ -75,35 +76,63 @@ export class CreateFormComponent implements OnInit, OnChanges {
   saveEmpDetails() {
     if (this.createEmployeeForm.valid && this.createEmployeeForm.value.bloodgroup != 'select' && this.createEmployeeForm.value.department != 'select') {
       console.log("Savinggg")
-      const [year, month, day] = this.createEmployeeForm.value.dob.split('-');
-      let userInfo = {
-        id: this.editId,
-        firstname: this.createEmployeeForm.value.firstname,
-        lastname: this.createEmployeeForm.value.lastname,
-        age: this.createEmployeeForm.value.age,
-        dob: day + '/' + month + '/' + year,
-        bloodgroup: this.createEmployeeForm.value.bloodgroup,
-        gender: this.createEmployeeForm.value.gender,
-        email: this.createEmployeeForm.value.email,
-        contact: this.createEmployeeForm.value.contact,
-        address: this.createEmployeeForm.value.address,
-        image: this.fileName,
-        qualification: this.createEmployeeForm.value.qualification,
-        course: this.createEmployeeForm.value.subject,
-        university: this.createEmployeeForm.value.university,
-        percentage: this.createEmployeeForm.value.percentage,
-        department: this.createEmployeeForm.value.department,
-        designation: this.createEmployeeForm.value.designation,
-        fb: this.createEmployeeForm.value.fbid,
-        insta: this.createEmployeeForm.value.instaid,
-        linkedin: this.createEmployeeForm.value.linkedinid
-      }
+      
       if (this.editId) {
+        let userInfo = {
+          id: this.editId,
+          firstname: this.createEmployeeForm.value.firstname,
+          lastname: this.createEmployeeForm.value.lastname,
+          age: this.createEmployeeForm.value.age,
+          dob: this.createEmployeeForm.value.dob,
+          bloodgroup: this.createEmployeeForm.value.bloodgroup,
+          gender: this.createEmployeeForm.value.gender,
+          email: this.createEmployeeForm.value.email,
+          contact: this.createEmployeeForm.value.contact,
+          address: this.createEmployeeForm.value.address,
+          image: this.fileName,
+          qualification: this.createEmployeeForm.value.qualification,
+          course: this.createEmployeeForm.value.subject,
+          university: this.createEmployeeForm.value.university,
+          percentage: this.createEmployeeForm.value.percentage,
+          department: this.createEmployeeForm.value.department,
+          designation: this.createEmployeeForm.value.designation,
+          fb: this.createEmployeeForm.value.fbid,
+          insta: this.createEmployeeForm.value.instaid,
+          linkedin: this.createEmployeeForm.value.linkedinid,
+          leavedetails:this.leaveDetails
+        }
         this._api.editEmployee(userInfo).subscribe((response) => {
           console.log(response)
         })
       }
       else {
+        let totalEmployees:any=[];
+        this._api.getEmployees().subscribe((response)=>{
+          totalEmployees=response;
+        })
+        let userInfo = {
+          id: totalEmployees.length,
+          firstname: this.createEmployeeForm.value.firstname,
+          lastname: this.createEmployeeForm.value.lastname,
+          age: this.createEmployeeForm.value.age,
+          dob: this.createEmployeeForm.value.dob,
+          bloodgroup: this.createEmployeeForm.value.bloodgroup,
+          gender: this.createEmployeeForm.value.gender,
+          email: this.createEmployeeForm.value.email,
+          contact: this.createEmployeeForm.value.contact,
+          address: this.createEmployeeForm.value.address,
+          image: this.fileName,
+          qualification: this.createEmployeeForm.value.qualification,
+          course: this.createEmployeeForm.value.subject,
+          university: this.createEmployeeForm.value.university,
+          percentage: this.createEmployeeForm.value.percentage,
+          department: this.createEmployeeForm.value.department,
+          designation: this.createEmployeeForm.value.designation,
+          fb: this.createEmployeeForm.value.fbid,
+          insta: this.createEmployeeForm.value.instaid,
+          linkedin: this.createEmployeeForm.value.linkedinid,
+          leavedetails:[]
+        }
         this._api.addEmployee(userInfo).subscribe((response) => {
           this._snackBar.open("New employee added successfully", "", {
             duration: 2000,
