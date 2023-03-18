@@ -1,0 +1,29 @@
+@import '../../../assets/scss/variables';
+@import '../../../assets/scss/mixins';
+@import '../../../assets/scss/base';
+
+.request-module{
+    padding: $spacer-1 $spacer-0;
+
+    .request{
+        font-size: $font-sm;
+        line-height: 30px;
+        letter-spacing: 1px;
+    }
+    .btn-div{
+        padding-top: $spacer-2;
+    }
+    .btn{
+        background-color: $color-contrasting;
+        color: $color-primary;
+        font-size: $font-sm;
+        margin-right: $spacer-1;
+        border-radius: 50px;
+        padding: $spacer-md $spacer-2;
+
+        &:hover{
+            background-color: $color-primary;
+            color: $color-contrasting;
+        }
+    }
+}

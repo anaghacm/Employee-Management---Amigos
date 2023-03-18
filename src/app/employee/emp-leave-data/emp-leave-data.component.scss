@@ -21,7 +21,14 @@
         flex-wrap: wrap;
 
     }
-
+    .no-leave{
+        font-size: $font-md;
+        font-style: italic;
+        font-weight: 600;
+        text-align: center;
+        color: $color-text;
+        padding-bottom: $spacer-4;
+    }
     .card {
         border: none;
         min-width: 200px;

@@ -30,16 +30,18 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.valid) {
       let username = this.loginForm.value.username;
       let password = this.loginForm.value.password;
-      this._api.getUsers().subscribe((response: any) => {
-        let user = response.filter((user: any) => {
-          return user.username == username && user.password == password
-        })
-        if (user.length > 0) {
-          localStorage.setItem('currentUser', JSON.stringify(user[0]));
-          if (user[0].category == 'hr') {
+      this._api.getUsers(username).subscribe((response: any) => {
+        console.log(response)
+        let user =response[0]
+        // let user = response.filter((user: any) => {
+        //   return user.username == username && user.password == password
+        // })
+        if (user.password == password) {
+          localStorage.setItem('currentUser', JSON.stringify(user));
+          if (user.category == 'hr') {
             this._router.navigateByUrl('hr');
           }
-          else if (user[0].category == 'emp') {
+          else if (user.category == 'emp') {
             this._router.navigateByUrl('employees');
           }
         }

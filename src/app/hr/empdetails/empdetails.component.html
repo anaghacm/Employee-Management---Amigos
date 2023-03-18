@@ -9,7 +9,7 @@
                     <p class="name-text">{{employee.firstname | uppercase}} {{employee.lastname | uppercase}}</p>
                     <p class="des-text">{{employee.designation}}</p>
                     <div class="emp-info">
-                        <div class="each-col">
+                        <div class="each-col icon-col">
                             <p class="icon"><fa-icon [icon]="faUser"></fa-icon></p>
                         </div>
                         <div class="each-col">
@@ -19,7 +19,7 @@
                             <p>{{employee.bloodgroup}}</p>
 
                         </div>
-                        <div class="each-col">
+                        <div class="each-col icon-col">
                             <p class="icon"><fa-icon [icon]="faAt"></fa-icon></p>
                             <p class="icon"><fa-icon [icon]="faPhoneAlt"></fa-icon></p>
                             <p class="icon"><fa-icon [icon]="faLocation"></fa-icon></p>
@@ -31,7 +31,7 @@
                             <p>{{employee.address}}</p>
 
                         </div>
-                        <div class="each-col">
+                        <div class="each-col icon-col">
                             <p class="icon"><fa-icon [icon]="faGraduationCap"></fa-icon></p>
                         </div>
                         <div class="each-col">
@@ -40,7 +40,7 @@
                             <p>{{employee.university}}</p>
                             <p>{{employee.percentage}} %</p>
                         </div>
-                        <div class="each-col">
+                        <div class="each-col icon-col">
                             <p class="icon"><fa-icon [icon]="faExclamationCircle"></fa-icon></p>
                         </div>
                         <div class="each-col leave-col">
@@ -54,7 +54,7 @@
                                 <p>{{leave.noofdays}} days</p>
                                 <p>Status : {{leave.status}}</p>
                             </div>
-                           
+
                         </div>
                     </div>
                     <div class="smlinks">
@@ -69,6 +69,8 @@
 
             </div>
             <div class="manage-emp">
+                <button class="btn btn-request" data-bs-toggle="modal" data-bs-target="#leaveRequest"
+                    (click)="getDetails(employee)" [disabled]="!employee.leaveRequestStatus"><fa-icon [icon]="faExclamationCircle"></fa-icon></button>
                 <button class="btn btn-edit" data-bs-toggle="modal" data-bs-target="#editEmployee"
                     (click)="getDetails(employee)"><fa-icon [icon]="faEdit"></fa-icon></button>
                 <button class="btn btn-delete" (click)="deleteEmployee(employee.id, employee.name)"><fa-icon
@@ -89,6 +91,22 @@
             </div>
             <div class="modal-body">
                 <app-create-form [editEmployee]='editEmployee'></app-create-form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="leaveRequest" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <p class="modal-title fs-5" id="staticBackdropLabel">Leave Requests</p>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <app-leave-request [editEmployee]='editEmployee'></app-leave-request>
             </div>
         </div>
     </div>

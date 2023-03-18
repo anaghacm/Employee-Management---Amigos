@@ -1,0 +1,15 @@
+<div class="request-module">
+    <div class="request" *ngFor="let request of requestArray">
+        <p>Type : <strong>{{request.type}}</strong></p>
+        <p>From : <strong>{{request.from}}</strong></p>
+        <p>To : <strong>{{request.to}}</strong></p>
+        <p>No of days : <strong>{{request.noofdays}}</strong></p>
+        <p>Reason : <strong>{{request.reason}}</strong></p>
+
+        <div class="btn-div">
+            <button class="btn btn-approve" (click)="respondRequest(request.id,'Approved')" data-bs-dismiss="modal">Approve</button>
+            <button class="btn btn-reject" (click)="respondRequest(request.id,'Rejected')" data-bs-dismiss="modal">Reject</button>
+            <button class="btn btn-pending" data-bs-dismiss="modal">Keep Pending</button>
+        </div>
+    </div>
+</div>

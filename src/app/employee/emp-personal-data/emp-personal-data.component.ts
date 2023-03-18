@@ -71,29 +71,37 @@ export class EmpPersonalDataComponent implements OnInit {
     document.getElementById('btnpersonal')?.style.setProperty("display","block")
   }
   saveDetails(){
-    let userDetails={
-      id:this.userInfo.id,
-      firstname:this.personalDataForm.value.firstname,
-      lastname:this.personalDataForm.value.lastname,
-      age:this.personalDataForm.value.age,
-      dob:this.personalDataForm.value.dob,
-      bloodgroup:this.personalDataForm.value.bloodgroup,
-      gender:this.personalDataForm.value.gender,
-      email:this.personalDataForm.value.email,
-      contact:this.personalDataForm.value.contact,
-      address:this.personalDataForm.value.address,
-      fb:this.personalDataForm.value.fbid,
-      insta:this.personalDataForm.value.instaid,
-      linkedin:this.personalDataForm.value.linkedinid
+    if(this.personalDataForm.valid){
+      let userDetails={
+        id:this.userInfo.id,
+        firstname:this.personalDataForm.value.firstname,
+        lastname:this.personalDataForm.value.lastname,
+        age:this.personalDataForm.value.age,
+        dob:this.personalDataForm.value.dob,
+        bloodgroup:this.personalDataForm.value.bloodgroup,
+        gender:this.personalDataForm.value.gender,
+        email:this.personalDataForm.value.email,
+        contact:this.personalDataForm.value.contact,
+        address:this.personalDataForm.value.address,
+        fb:this.personalDataForm.value.fbid,
+        insta:this.personalDataForm.value.instaid,
+        linkedin:this.personalDataForm.value.linkedinid
+      }
+      this._api.updatePersonalInfo(userDetails).subscribe((response)=>{
+        this._snackBar.open("Updated successfully", "", {
+          duration: 2000,
+          panelClass: ['success-snackbar']
+        });
+      })
+      this.personalDataForm.disable()
+      document.getElementById('btnpersonal')?.style.setProperty("display","none")
     }
-    this._api.updatePersonalInfo(userDetails).subscribe((response)=>{
-      this._snackBar.open("Updated successfully", "", {
-        duration: 2000,
-        panelClass: ['success-snackbar']
-      });
-    })
+    
+  }
+
+  cancel(){
     this.personalDataForm.disable()
-    document.getElementById('btnpersonal')?.style.setProperty("display","none")
+      document.getElementById('btnpersonal')?.style.setProperty("display","none")
   }
 
 }

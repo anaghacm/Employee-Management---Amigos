@@ -106,12 +106,7 @@ export class CreateFormComponent implements OnInit, OnChanges {
         })
       }
       else {
-        let totalEmployees:any=[];
-        this._api.getEmployees().subscribe((response)=>{
-          totalEmployees=response;
-        })
         let userInfo = {
-          id: totalEmployees.length,
           firstname: this.createEmployeeForm.value.firstname,
           lastname: this.createEmployeeForm.value.lastname,
           age: this.createEmployeeForm.value.age,

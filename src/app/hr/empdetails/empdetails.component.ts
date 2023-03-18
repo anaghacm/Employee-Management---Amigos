@@ -3,7 +3,6 @@ import { faUser, faAt, faPhoneAlt, faMapMarked, faEdit, faTrash, faGraduationCap
 import { ApiService } from 'src/app/services/api.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-empdetails',
@@ -18,12 +17,12 @@ export class EmpdetailsComponent implements OnInit {
   faEdit = faEdit;
   faTrash = faTrash;
   faGraduationCap = faGraduationCap;
-  faExclamationCircle=faExclamationCircle;
+  faExclamationCircle = faExclamationCircle;
   public employeesList!: any;
   public editEmployee!: any;
 
 
-  constructor(private _api: ApiService, private _dialog: MatDialog, private _fb: FormBuilder) {
+  constructor(private _api: ApiService, private _dialog: MatDialog) {
     this.getEmployees();
   }
 
@@ -37,7 +36,22 @@ export class EmpdetailsComponent implements OnInit {
   getEmployees() {
     this._api.getEmployees().subscribe((response) => {
       this.employeesList = response;
+      for (let employee of this.employeesList) {
+        this._api.getLeaveDetailsById(employee.id).subscribe((response) => {
+          employee.leavedetails = response;
+          employee.leaveRequestStatus = false;
+          if (employee.leavedetails.length > 0) {
+            for (let request of employee.leavedetails) {
+              if (request.status == 'Pending') {
+                employee.leaveRequestStatus = true;
+
+              }
+            }
+          }
+        })
+      }
     })
+
   }
   deleteEmployee(id: number, name: string) {
 

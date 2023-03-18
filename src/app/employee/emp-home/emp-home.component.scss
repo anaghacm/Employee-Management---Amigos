@@ -13,7 +13,7 @@
 }
 
 .profile-module {
-    // height: 600px;
+    padding-bottom: $spacer-4;
 
     .container {
         box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
@@ -65,7 +65,8 @@
         }
 
         .pp-img {
-            width: 100%;
+            width: 150%;
+            margin-left: -25%;
         }
 
         .name-div {

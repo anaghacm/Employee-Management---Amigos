@@ -11,6 +11,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { EmpPersonalDataComponent } from './emp-personal-data/emp-personal-data.component';
 import { EmpAcademicDataComponent } from './emp-academic-data/emp-academic-data.component';
 import { EmpLeaveDataComponent } from './emp-leave-data/emp-leave-data.component';
+import { EmpFooterComponent } from './emp-footer/emp-footer.component';
 
 
 
@@ -22,7 +23,8 @@ import { EmpLeaveDataComponent } from './emp-leave-data/emp-leave-data.component
     EmpLeaveapplyComponent,
     EmpPersonalDataComponent,
     EmpAcademicDataComponent,
-    EmpLeaveDataComponent
+    EmpLeaveDataComponent,
+    EmpFooterComponent
   ],
   imports: [
     CommonModule,

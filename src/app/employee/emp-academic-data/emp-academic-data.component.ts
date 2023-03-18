@@ -55,22 +55,29 @@ export class EmpAcademicDataComponent implements OnInit {
     document.getElementById('btnacademic')?.style.setProperty("display", "block");
   }
   saveDetails() {
-    let userDetails = {
-      id: this.userInfo.id,
-      qualification: this.academicDataForm.value.qualification,
-      course: this.academicDataForm.value.course,
-      university: this.academicDataForm.value.university,
-      percentage: this.academicDataForm.value.percentage
-      
+    if(this.academicDataForm.valid){
+      let userDetails = {
+        id: this.userInfo.id,
+        qualification: this.academicDataForm.value.qualification,
+        course: this.academicDataForm.value.course,
+        university: this.academicDataForm.value.university,
+        percentage: this.academicDataForm.value.percentage
+        
+      }
+      this._api.updatePersonalInfo(userDetails).subscribe((response) => {
+        this._snackBar.open("Updated successfully", "", {
+          duration: 2000,
+          panelClass: ['success-snackbar']
+        });
+      })
+      this.academicDataForm.disable()
+      document.getElementById('btnacademic')?.style.setProperty("display", "none")
     }
-    this._api.updatePersonalInfo(userDetails).subscribe((response) => {
-      this._snackBar.open("Updated successfully", "", {
-        duration: 2000,
-        panelClass: ['success-snackbar']
-      });
-    })
+  }
+
+  cancel(){
     this.academicDataForm.disable()
-    document.getElementById('btnacademic')?.style.setProperty("display", "none")
+      document.getElementById('btnacademic')?.style.setProperty("display", "none")
   }
 }
 

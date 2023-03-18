@@ -130,14 +130,24 @@
             &:hover {
                 opacity: 1;
             }
+            &:focus{
+                border: none;
+            }
+
+            &:disabled{
+                display: none;
+            }
         }
 
         .btn-edit {
-            color: $color-primary;
+            color: $color-blue;
         }
 
         .btn-delete {
             color: red;
+        }
+        .btn-request{
+            color: $color-text;
         }
     }
 }
@@ -218,5 +228,54 @@
     }
     100% {
         transform: rotate(360deg);
+    }
+}
+
+@include tablet{
+    .card-module{
+        .single-profile{
+            flex-direction: column;
+
+            &:nth-of-type(even) {
+                flex-direction: column;
+    
+                .text-div {
+                    margin-right: 0px;
+                }
+                .manage-emp{
+                    left: 0px;
+                }
+            }
+            .text-div{
+                width: 100%;
+                margin-left: 0px;
+
+                &::before{
+                    transform: rotate(35deg);
+                }
+            }
+        }
+        
+    }
+}
+
+@include mobile{
+    .card-module{
+        .single-profile{
+            .text-div{
+                width: 100%;
+                height: 100%;
+            }
+            .emp-info{
+                flex-wrap: wrap;
+            }
+            .each-col{
+                width: 35%;
+
+                &.icon-col{
+                    width: 15%;
+                }
+            }
+        }
     }
 }

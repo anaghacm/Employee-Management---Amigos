@@ -14,8 +14,8 @@ export class ApiService {
   get RefreshRequired() {
     return this._refreshRequired;
   }
-  getUsers() {
-    return this._http.get('http://localhost:3000/users');
+  getUsers(username:string) {
+    return this._http.get('http://localhost:3000/users/?username='+username);
   }
 
   resetPassword(userDetails: any) {
@@ -49,6 +49,9 @@ export class ApiService {
       })
     );
   }
+  leaveRequest(userDetails:any){
+    return this._http.post('http://localhost:3000/leavedetails', userDetails);
+  }
   updateProfilePic(userDetails:any){
     return this._http.patch('http://localhost:3000/employees/' + userDetails.id, userDetails).pipe(
       tap(() => {
@@ -58,5 +61,15 @@ export class ApiService {
   }
   getEmployeeById(id: number) {
     return this._http.get('http://localhost:3000/employees/' + id);
+  }
+  getLeaveDetailsById(id:number){
+    return this._http.get('http://localhost:3000/leavedetails/?employeeid=' + id);
+  }
+  respondLeaveRequest(response:any){
+    return this._http.patch('http://localhost:3000/leavedetails/'+response.id, response).pipe(
+      tap(() => {
+        this.RefreshRequired.next();
+      })
+    );
   }
 }

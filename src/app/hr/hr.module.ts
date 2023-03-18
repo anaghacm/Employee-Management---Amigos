@@ -14,6 +14,8 @@ import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-
 import {MatDialogModule} from '@angular/material/dialog';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CreateFormComponent } from './create-form/create-form.component';
+import { HrFooterComponent } from './hr-footer/hr-footer.component';
+import { LeaveRequestComponent } from './leave-request/leave-request.component';
 
 
 @NgModule({
@@ -27,6 +29,8 @@ import { CreateFormComponent } from './create-form/create-form.component';
     EmpdetailsComponent,
     ConfirmationDialogComponent,
     CreateFormComponent,
+    HrFooterComponent,
+    LeaveRequestComponent,
   ],
   imports: [
     CommonModule,

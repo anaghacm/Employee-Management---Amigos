@@ -3,7 +3,7 @@
     {
       "id": 1,
       "username": "john",
-      "password": "aaa",
+      "password": "abc",
       "category": "emp",
       "active": 0
     },
@@ -41,7 +41,7 @@
       "id": 1,
       "firstname": "John",
       "lastname": "Graham",
-      "age": 28,
+      "age": "28",
       "dob": "1992-04-03",
       "bloodgroup": "B+",
       "gender": "male",
@@ -52,38 +52,13 @@
       "qualification": "Post Graduation",
       "course": "ME CSE",
       "university": "CUSAT",
-      "percentage": "89",
+      "percentage": "86",
       "department": "Front End Development",
       "designation": "Associate Engineer",
       "fb": "https://www.facebook.com",
       "insta": "https://www.instagram.com",
       "linkedin": "https://www.linkedin.com",
-      "leavedetails": [
-        {
-          "type": "Sick",
-          "from": "03/03/2023",
-          "to": "04/03/2023",
-          "noofdays": 2,
-          "reason": "Medical Appointment",
-          "status": "Approved"
-        },
-        {
-          "type": "Casual",
-          "from": "22/03/2023",
-          "to": "22/03/2023",
-          "noofdays": 1,
-          "reason": "Personal Reasons",
-          "status": "Pending"
-        },
-        {
-          "type": "Sick",
-          "from": "03/03/2023",
-          "to": "04/03/2023",
-          "noofdays": 2,
-          "reason": "Medical Appointment",
-          "status": "Rejected"
-        }
-      ]
+      "leavedetails": []
     },
     {
       "id": 2,
@@ -152,16 +127,7 @@
       "fb": "https://www.facebook.com",
       "insta": "https://www.instagram.com",
       "linkedin": "https://www.linkedin.com",
-      "leavedetails": [
-        {
-          "type": "Casual",
-          "from": "14/03/2023",
-          "to": "14/03/2023",
-          "noofdays": 1,
-          "reason": "Personal Reasons",
-          "status": "Approved"
-        }
-      ]
+      "leavedetails": []
     },
     {
       "id": 5,
@@ -253,24 +219,7 @@
       "fb": "https://www.facebook.com",
       "insta": "https://www.instagram.com",
       "linkedin": "https://www.linkedin.com",
-      "leavedetails": [
-        {
-          "type": "Sick",
-          "from": "02/01/2023",
-          "to": "03/01/2023",
-          "noofdays": 2,
-          "reason": "Medical Appointment",
-          "status": "Approved"
-        },
-        {
-          "type": "Casual",
-          "from": "22/03/2023",
-          "to": "22/03/2023",
-          "noofdays": 1,
-          "reason": "Personal Reasons",
-          "status": "Pending"
-        }
-      ]
+      "leavedetails": []
     },
     {
       "id": 9,
@@ -316,20 +265,12 @@
       "fb": "https://www.facebook.com",
       "insta": "https://www.instagram.com",
       "linkedin": "https://www.linkedin.com",
-      "leavedetails": [
-        {
-          "type": "Sick",
-          "from": "10/03/2023",
-          "to": "12/03/2023",
-          "noofdays": 3,
-          "reason": "Admitted in hospital",
-          "status": "Approved"
-        }
-      ]
+      "leavedetails": []
     }
   ],
   "leavedetails": [
     {
+      "id": 1,
       "employeeid": 1,
       "type": "Sick",
       "from": "03/03/2023",
@@ -339,6 +280,27 @@
       "status": "Approved"
     },
     {
+      "id": 2,
+      "employeeid": 1,
+      "type": "Casual",
+      "from": "22/03/2023",
+      "to": "22/03/2023",
+      "noofdays": 1,
+      "reason": "Personal Reasons",
+      "status": "Approved"
+    },
+    {
+      "id": 3,
+      "employeeid": 1,
+      "type": "Sick",
+      "from": "03/03/2023",
+      "to": "04/03/2023",
+      "noofdays": 2,
+      "reason": "Medical Appointment",
+      "status": "Rejected"
+    },
+    {
+      "id": 4,
       "employeeid": 4,
       "type": "Casual",
       "from": "14/03/2023",
@@ -348,6 +310,7 @@
       "status": "Approved"
     },
     {
+      "id": 5,
       "employeeid": 5,
       "type": "Sick",
       "from": "10/03/2023",
@@ -357,13 +320,34 @@
       "status": "Approved"
     },
     {
-      "employeeid": 1,
+      "id": 6,
+      "employeeid": 8,
+      "type": "Sick",
+      "from": "02/01/2023",
+      "to": "03/01/2023",
+      "noofdays": 2,
+      "reason": "Medical Appointment",
+      "status": "Approved"
+    },
+    {
+      "id": 7,
+      "employeeid": 8,
       "type": "Casual",
       "from": "22/03/2023",
       "to": "22/03/2023",
       "noofdays": 1,
       "reason": "Personal Reasons",
       "status": "Pending"
+    },
+    {
+      "id": 8,
+      "employeeid": 10,
+      "type": "Sick",
+      "from": "10/03/2023",
+      "to": "12/03/2023",
+      "noofdays": 3,
+      "reason": "Admitted in hospital",
+      "status": "Approved"
     }
   ]
 }

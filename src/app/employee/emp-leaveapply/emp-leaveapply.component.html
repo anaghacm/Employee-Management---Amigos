@@ -1,31 +1,28 @@
-<!-- <section class="banner-module">
-    <p>Apply for Leave</p>
-</section> -->
 <section class="leeaveapp-module">
     <div class="container">
         <div class="leaveapp-div">
 
             <div class="card form-card">
                 <p class="card-head">Apply for Leave</p>
-                <form class="leave-form" action="">
+                <form class="leave-form" [formGroup]="leaveApplicationForm" (ngSubmit)="applicationSubmit()">
                     <div class="input-div half-div">
                         <label for="" class="form-control-label">First day of absence</label>
-                        <input type="date" class="form-control" name="startdate">
+                        <input type="date" class="form-control" name="startdate" formControlName="startdate" (change)="checkDate()">
                     </div>
                     <div class="input-div half-div">
                         <label for="" class="form-control-label">Last day of absence</label>
-                        <input type="date" class="form-control" name="enddate">
+                        <input type="date" class="form-control" name="enddate" formControlName="enddate" (change)="checkDate()">
                     </div>
 
                     <div class="input-div">
                         <div class="text-center">
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="daylength" id="fullday"
+                                <input class="form-check-input" type="radio" name="daylength" id="fullday"  formControlName="daylength"
                                     value="fullday">
                                 <label class="form-check-label" for="fullday">Full Day</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="daylength" id="halfday"
+                                <input class="form-check-input" type="radio" name="daylength" id="halfday"  formControlName="daylength"
                                     value="halfday">
                                 <label class="form-check-label" for="halfday">Half Day</label>
                             </div>
@@ -35,7 +32,7 @@
                         <label for="" class="form-control-label">Type of absence request</label>
                         <select class="form-select form-control" name="leavetype" formControlName="leavetype"
                             id="leavetype">
-                            <option value="select">-- Select --</option>
+                            <option value="select"[disabled]="true">-- Select --</option>
                             <option value="Sick">Sick Leave</option>
                             <option value="Casual">Casual Leave</option>
                             <option value="Emergency">Emergency Leave</option>
@@ -43,10 +40,11 @@
                     </div>
                     <div class="input-div">
                         <label for="" class="form-control-label">Reason</label>
-                        <input type="text" class="form-control" name="reason">
+                        <input type="text" class="form-control" name="reason" formControlName="reason">
 
                     </div>
                     <div class="btn-div">
+                        <button class="btn btn-apply" (click)="resetForm()">Reset</button>
                         <button class="btn btn-apply">Apply</button>
                     </div>
                 </form>
@@ -54,8 +52,10 @@
 
             <div class="history-div">
                 <p class="heading">Absence History</p>
-
-                <div class="leave-card" *ngFor="let leave of userInfo.leavedetails">
+                <div class="no-leave" *ngIf="userInfo.length==0">
+                    <p>No leave records found!</p>
+                </div>
+                <div class="leave-card" *ngFor="let leave of userInfo">
                     <div class="symbol">
                         <fa-icon *ngIf="leave.status=='Approved'" [icon]="faCheckCircle" style="color:green"></fa-icon>
                         <fa-icon *ngIf="leave.status=='Rejected'" [icon]="faExclamationCircle" style="color:red"></fa-icon>

@@ -4,15 +4,12 @@
 
 .createemp-module {
     padding: $spacer-6 $spacer-0;
-    // background-image: url('../../../assets/images/formbg.jpg');
-    // background-position: center;
-    // background-repeat: no-repeat;
-    // background-size: cover;
 
     .heading {
         padding: $spacer-4;
         color: $color-primary;
         text-align: center;
+        line-height: 35px;
     }
 
     .heading-text {

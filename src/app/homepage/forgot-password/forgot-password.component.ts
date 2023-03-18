@@ -37,20 +37,10 @@ export class ForgotPasswordComponent implements OnInit {
       let password = this.resetPasswordForm.value.password;
       let cpassword = this.resetPasswordForm.value.cpassword;
       if (password === cpassword) {
-        this._api.getUsers().subscribe((response: any) => {
-
-          let user = response.filter((user: any) => {
-            return user.username == username
-          })
-          if (user.length > 0) {
-            let id = user[0].id;
-            let category = user[0].category;
-            // let userInfo = {
-            //   id,
-            //   username,
-            //   password,
-            //   category
-            // }
+        this._api.getUsers(username).subscribe((response: any) => {
+          let user=response[0]
+          if (user) {
+            let id = user.id;
             let userInfo={
               id,
               password

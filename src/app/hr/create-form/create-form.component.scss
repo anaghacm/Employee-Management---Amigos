@@ -90,3 +90,21 @@
         text-align: center;
     }
 }
+
+@include tablet{
+    .createform-module{
+        .create-form{
+            width: 100%;
+        }
+    }
+}
+
+@include mobile{
+    .createform-module{
+        .create-form{
+            .input-div{
+                width: 100%;
+            }
+        }
+    }
+}

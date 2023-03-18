@@ -3,7 +3,10 @@
         <p>Leave Information</p>
     </div>
     <div class="row leave-info">
-        <div class="col leave-block" *ngFor="let leave of userInfo.leavedetails">
+        <div class="no-leave" *ngIf="userInfo.length==0">
+            <p>No leave records found!</p>
+        </div>
+        <div class="col leave-block" *ngFor="let leave of userInfo">
             <div class="card h-100">
                 <div class="card-body">
                     <p class="card-title">{{leave.type}} Leave</p>
