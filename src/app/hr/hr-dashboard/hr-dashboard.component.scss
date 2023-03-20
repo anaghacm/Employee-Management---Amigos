@@ -1,0 +1,12 @@
+@import '../../../assets/scss/variables';
+
+mat-drawer{
+    background-color: $color-primary;
+    width: 250px;
+    position: fixed;
+    left: 0;
+    top: 0;
+}
+mat-drawer-content{
+    padding: $spacer-0;
+}

@@ -16,7 +16,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CreateFormComponent } from './create-form/create-form.component';
 import { HrFooterComponent } from './hr-footer/hr-footer.component';
 import { LeaveRequestComponent } from './leave-request/leave-request.component';
-
+import { D3ServiceService } from './hr-services/d3-service.service';
+import {MatMenuModule} from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,11 @@ import { LeaveRequestComponent } from './leave-request/leave-request.component';
     HrRoutingModule,
     FontAwesomeModule,
     MatDialogModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatMenuModule,
+  ],
+  providers:[
+    D3ServiceService
   ]
 })
 export class HrModule { }

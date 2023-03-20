@@ -12,4 +12,5 @@ export class HrHomeComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  
 }

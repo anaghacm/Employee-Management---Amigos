@@ -7,9 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HrDashboardComponent implements OnInit {
 
+  public openMenu:boolean=true;
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  sideBarToggler(){
+    this.openMenu=!this.openMenu
+  }
 }

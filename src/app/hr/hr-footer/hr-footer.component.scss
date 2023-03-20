@@ -4,14 +4,23 @@
 
 .hrfooter-module{
     background-color: $color-primary;
+    color: $color-white;
     letter-spacing: 1px;
+    padding: $spacer-0 $spacer-6;
+    // border-top: 1px solid $color-contrasting;
 
+    // .footer-divider{
+    //     width: 100%;
+    //     height: 1px;
+    //     color: $color-contrasting;
+    //     opacity: 0.8;
+    // }
     .footer{
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: $spacer-4 $spacer-0;
-        color: $color-white;
+        padding: $spacer-2 $spacer-0;
+        // color: $color-white;
     }
     .logo-div{
         width: calc(100% / 3);
@@ -19,7 +28,7 @@
     .company-name{
         font-size: $font-xsm;
         padding-top: $spacer-1;
-        opacity: 0.5;
+        opacity: 0.8;
     }
     .links{
         padding-top: $spacer-1;

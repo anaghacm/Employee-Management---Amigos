@@ -12,7 +12,7 @@ import { EmpPersonalDataComponent } from './emp-personal-data/emp-personal-data.
 import { EmpAcademicDataComponent } from './emp-academic-data/emp-academic-data.component';
 import { EmpLeaveDataComponent } from './emp-leave-data/emp-leave-data.component';
 import { EmpFooterComponent } from './emp-footer/emp-footer.component';
-
+import {MatMenuModule} from '@angular/material/menu';
 
 
 @NgModule({
@@ -31,7 +31,7 @@ import { EmpFooterComponent } from './emp-footer/emp-footer.component';
     EmployeeRoutingModule,
     FontAwesomeModule,
     ReactiveFormsModule,
-   
+    MatMenuModule
   ]
 })
 export class EmployeeModule { }

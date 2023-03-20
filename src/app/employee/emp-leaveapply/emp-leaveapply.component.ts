@@ -24,7 +24,6 @@ export class EmpLeaveapplyComponent implements OnInit {
   constructor(private _api: ApiService, private _fb: FormBuilder, private _snackBar: MatSnackBar) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser') || '');
     this.getLeaveDetailsById();
-
   }
 
   ngOnInit(): void {

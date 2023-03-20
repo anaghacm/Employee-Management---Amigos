@@ -34,6 +34,41 @@
       "password": "mno",
       "category": "hr",
       "active": 1
+    },
+    {
+      "id": 6,
+      "username": "Nicholas",
+      "password": "abc",
+      "category": "emp",
+      "active": 0
+    },
+    {
+      "id": 7,
+      "username": "Glen",
+      "password": "def",
+      "category": "hr",
+      "active": 0
+    },
+    {
+      "id": 8,
+      "username": "Clementina",
+      "password": "ghi",
+      "category": "emp",
+      "active": 1
+    },
+    {
+      "id": 9,
+      "username": "Ervin",
+      "password": "jkl",
+      "category": "emp",
+      "active": 0
+    },
+    {
+      "id": 10,
+      "username": "Leanna",
+      "password": "mno",
+      "category": "hr",
+      "active": 1
     }
   ],
   "employees": [

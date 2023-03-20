@@ -1,15 +1,29 @@
 @import '../../../assets/scss/variables';
 
-.emplist-module{
-    padding: $spacer-6 $spacer-0;
+.emplist-module {
+    padding-bottom: $spacer-4;
 
-    .heading{
-        padding: $spacer-2;
-        color: $color-primary;
+    .heading {
+        padding-top: 80px;
+        color: $color-white;
         text-align: center;
+        background-color: $color-primary;
+        height: 400px;
     }
-    .heading-text{
+
+    .heading-text {
         font-size: $font-heading;
-        font-weight: 700;
+        font-weight: 300;
+    }
+    .emp-list {
+        margin-top: -250px;
+        background-color: $color-white;
+        box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    }
+
+    .mat-menu-panel {
+        width: 30px;
+        height: 20px;
+        margin: 0;
     }
 }

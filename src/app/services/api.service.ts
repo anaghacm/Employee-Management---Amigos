@@ -22,6 +22,9 @@ export class ApiService {
     return this._http.patch('http://localhost:3000/users/' + userDetails.id, userDetails);
   }
 
+  getAllUsers(){
+    return this._http.get('http://localhost:3000/users');
+  }
   getEmployees() {
     return this._http.get('http://localhost:3000/employees');
   }
