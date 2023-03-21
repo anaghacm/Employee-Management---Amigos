@@ -11,20 +11,6 @@ export class D3ServiceService {
 
   public d3 = d3;
 
-
   constructor() { }
-  /**
-     * Generates random letter string with specified length
-     * @param length: number
-     */
-  public generateId(length: any): string {
-    var result = '';
-    var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
-    var charactersLength = characters.length;
-    for (var i = 0; i < length; i++) {
-      result += characters.charAt(Math.floor(Math.random() * charactersLength));
-    }
-    return result;
-  }
 
 }

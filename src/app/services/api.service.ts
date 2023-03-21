@@ -75,4 +75,8 @@ export class ApiService {
       })
     );
   }
+
+  getLastWeekLeaveDetails(){
+    return this._http.get('http://localhost:3000/leavedetails/?status=Approved');
+  }
 }

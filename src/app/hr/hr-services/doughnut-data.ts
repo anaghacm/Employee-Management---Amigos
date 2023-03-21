@@ -1,5 +1,5 @@
 export interface DoughnutData {
     name: string;
-    value: string;
+    value: number;
     color?: string;
 }

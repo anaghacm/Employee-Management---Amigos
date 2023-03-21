@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { D3ServiceService } from '../hr-services/d3-service.service';
 import { DoughnutData } from '../hr-services/doughnut-data'
 import { entries } from "d3-collection";
@@ -11,83 +11,61 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class D3DoughnutComponent implements OnInit {
   private allUsers: any
-  private activeEmp: number = 10;
-  private inactiveEmp: number = 20;
+
+  //Initial Data
   private data: DoughnutData[] = [
-    { name: "active", value: this.activeEmp.toString(), color: "#FB8500" },
-    { name: "inactive", value: this.inactiveEmp.toString(), color: "#219EBC" }
+    { name: "Active Employees", value: 0, color: "#FB8500" },
+    { name: "Inactive Employees", value: 0, color: "#219EBC" }
   ];
 
-  private width = 300;
-  private height = 300;
+  //Variables declared for doughnut charts
+  private width = 360;
+  private height = 310;
   private svg: any;
   private colors: any;
-  private radius = Math.min(this.width, this.height) / 2;
   constructor(private d3: D3ServiceService, private _api: ApiService) {
-    this.getCount();
-
   }
 
   ngOnInit(): void {
-    this.createSvg();
-    this.createColors(this.data);
-    console.log(this.radius)
-    this.drawChart();
+    this.getCount();
   }
 
   getCount() {
+    //Get active users details from db
     this._api.getAllUsers().subscribe((response) => {
       this.allUsers = response;
       for (let user of this.allUsers) {
         if (user.active == 1) {
-          this.activeEmp += 1;
+          this.data[0].value += 1;
         }
         else if (user.active == 0) {
-          this.inactiveEmp += 1;
+          this.data[1].value += 1;
         }
       }
-      console.log(this.activeEmp, this.inactiveEmp)
+      console.log(this.data)
+      this.createSvg();
+      this.drawChart();
     })
-  }
-  private createSvg(): void {
-    this.svg = this.d3.d3
-      .select("figure#donut")
-      .append("svg")
-      .attr("viewBox", `0 0 ${this.width} ${this.height}`)
-      .append("g")
-      .attr(
-        "transform",
-        "translate(" + this.width / 2 + "," + this.height / 2 + ")"
-      );
+
   }
 
-  private createColors(data: any): void {
-    let index = 0;
-    const defaultColors = [
-      "#6773f1",
-      "#32325d",
-      "#6162b5",
-      "#6586f6",
-      "#8b6ced",
-      "#1b1b1b",
-      "#212121"
-    ];
-    const colorsRange: any = [];
-    this.data.forEach(element => {
-      if (element.color) colorsRange.push(element.color);
-      else {
-        colorsRange.push(defaultColors[index]);
-        index++;
-      }
-    });
+  //Create SVG
+  createSvg() {
+    this.svg = this.d3.d3.select('#donut')
+      .append('svg')
+      .attr('width', this.width)
+      .attr('height', this.height)
+  }
+
+  //Draw the doughnut chart
+  drawChart() {
+    //Set colors
     this.colors = this.d3.d3
       .scaleOrdinal()
-      .domain(data.map((d: any) => d.value.toString()))
-      .range(colorsRange);
-  }
+      .domain(this.data.map((d: any) => d.value.toString()))
+      .range(this.data.map((d: any) => d.color))
 
-  private drawChart(): void {
-    // Compute the position of each group on the pie:
+    //Pie generator
     var pie = this.d3.d3
       .pie()
       .sort(null) // Do not sort group by size
@@ -95,29 +73,57 @@ export class D3DoughnutComponent implements OnInit {
         return d.value;
       });
     var data_ready = pie(this.data.map((d: any) => { return d }));
+    console.log(data_ready)
 
-    // The arc generator
-    var arc = this.d3.d3
-      .arc()
-      .innerRadius(this.radius * 0.4) // This is the size of the donut hole
-      .outerRadius(this.radius * 0.8);
+    //Arc generator
+    var segments = this.d3.d3.arc()
+      .innerRadius(70)
+      .outerRadius(100)
+      .padAngle(0.05)
+      .padRadius(50);
 
-    // // Another arc that won't be drawn. Just for labels positioning
-    // var outerArc = this.d3.d3
-    //   .arc()
-    //   .innerRadius(this.radius * 0.9)
-    //   .outerRadius(this.radius * 0.9);
+    var sections = this.svg.append('g')
+      .attr('transform', 'translate(175,185)')
+      .selectAll('path')
+      .data(data_ready);
 
-    // Build the pie chart: Basically, each part of the pie is a path that we build using the arc function.
-    this.svg
-      .selectAll("allSlices")
+    sections
+      .enter()
+      .append('path')
+      .attr('d', segments)
+      .attr('fill', (d:any)=>this.colors(d.data.value))
+
+    //Text content
+    this.d3.d3.select('g')
+      .selectAll('text')
       .data(data_ready)
       .enter()
-      .append("path")
-      .attr("d", arc)
-      .attr("fill", (d: any) => this.colors(d.data.value))
-      .attr("stroke", "transparent")
-      .style("stroke-width", "1px")
-      .style("opacity", 0.9);
+      .append('text')
+      .attr('text-anchor','middle')
+      .attr('fill','#fff')
+      .attr('transform', (d:any)=>{return 'translate('+ segments.centroid(d) +')'})
+      .text((d:any)=>{return d.value})
+
+    //Legends
+    var legends = this.svg.append('g')
+      .attr('transform', 'translate(10,-20)')
+      .selectAll('.legends')
+      .data(data_ready);
+
+    var legend = legends.enter()
+      .append('g')
+      .classed('lengends', true)
+      .attr('transform', (d:any, i:any)=>{return "translate(0,"+ (i+1)*30 +")"});
+
+    legend.append('rect')
+      .attr('width',20)
+      .attr('height',20)
+      .attr('fill', (d:any)=>this.colors(d.data.value));
+
+    legend.append('text')
+      .text((d:any)=>{return d.data.name})
+      .attr('fill', (d:any)=>this.colors(d.data.value))
+      .attr('x', 30)
+      .attr('y', 15);
   }
 }

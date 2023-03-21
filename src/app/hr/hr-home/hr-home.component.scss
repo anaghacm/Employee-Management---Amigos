@@ -1,18 +1,58 @@
 @import '../../../assets/scss/variables';
 
 .dashboard-module{
-    background-color: $color-primary;
+    background-color: #022231;
+    letter-spacing: 1px;
 
     .charts-div{
         display: flex;
         justify-content: space-between;
-        align-items: center;
+        align-items: flex-start;
         flex-wrap: wrap;
+        padding: $spacer-3 $spacer-0;
+    }
+    .statistcs{
+        width: 25%;
+        background-color: $color-primary;
+        color: $color-white;
+        padding: $spacer-2;
+
+        .block-head{
+            text-align: left;
+            font-size: $font-md;
+            font-weight: 500;
+            padding-bottom: $spacer-2;
+        }
+        .block-content{
+            text-align: center;
+            font-size: 40px;
+            font-weight: 800;
+            color: $color-contrasting;
+        }
     }
     .emp-status{
-        width: 49%;
+        width:32%;
+        height: 310px;
+        background-color: $color-primary;
+    }
+    .productivity{
+        width: 32%;
+        height: 310px;
+        background-color: $color-primary;
     }
     .leave-status{
-        width: 49%;
+        width: 69%;
+        height: 400px;
+        margin-top: $spacer-3;
+        padding: $spacer-3 $spacer-6;
+        background-color: $color-primary;
     }
 }
+// .leave-status{
+//     width: 800px;
+//     height: 400px;
+//     margin: $spacer-3;
+//     // background-color: $color-black;
+    
+//     border: 1px solid $color-contrasting;
+// }

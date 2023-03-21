@@ -18,6 +18,8 @@ import { HrFooterComponent } from './hr-footer/hr-footer.component';
 import { LeaveRequestComponent } from './leave-request/leave-request.component';
 import { D3ServiceService } from './hr-services/d3-service.service';
 import {MatMenuModule} from '@angular/material/menu';
+import { BarChartComponent } from './bar-chart/bar-chart.component';
+import { GaugeChartComponent } from './gauge-chart/gauge-chart.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +34,8 @@ import {MatMenuModule} from '@angular/material/menu';
     CreateFormComponent,
     HrFooterComponent,
     LeaveRequestComponent,
+    BarChartComponent,
+    GaugeChartComponent,
   ],
   imports: [
     CommonModule,

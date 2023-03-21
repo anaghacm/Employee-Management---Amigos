@@ -308,8 +308,8 @@
       "id": 1,
       "employeeid": 1,
       "type": "Sick",
-      "from": "03/03/2023",
-      "to": "04/03/2023",
+      "from": "2023-03-14",
+      "to": "2023-03-15",
       "noofdays": 2,
       "reason": "Medical Appointment",
       "status": "Approved"
@@ -318,8 +318,8 @@
       "id": 2,
       "employeeid": 1,
       "type": "Casual",
-      "from": "22/03/2023",
-      "to": "22/03/2023",
+      "from": "2023-03-13",
+      "to": "2023-03-13",
       "noofdays": 1,
       "reason": "Personal Reasons",
       "status": "Approved"
@@ -328,8 +328,8 @@
       "id": 3,
       "employeeid": 1,
       "type": "Sick",
-      "from": "03/03/2023",
-      "to": "04/03/2023",
+      "from": "2023-03-03",
+      "to": "2023-03-04",
       "noofdays": 2,
       "reason": "Medical Appointment",
       "status": "Rejected"
@@ -338,8 +338,8 @@
       "id": 4,
       "employeeid": 4,
       "type": "Casual",
-      "from": "14/03/2023",
-      "to": "14/03/2023",
+      "from": "2023-03-03",
+      "to": "2023-03-03",
       "noofdays": 1,
       "reason": "Personal Reasons",
       "status": "Approved"
@@ -348,8 +348,8 @@
       "id": 5,
       "employeeid": 5,
       "type": "Sick",
-      "from": "10/03/2023",
-      "to": "12/03/2023",
+      "from": "2023-03-16",
+      "to": "2023-03-18",
       "noofdays": 3,
       "reason": "Admitted in hospital",
       "status": "Approved"
@@ -358,8 +358,8 @@
       "id": 6,
       "employeeid": 8,
       "type": "Sick",
-      "from": "02/01/2023",
-      "to": "03/01/2023",
+      "from": "2023-03-15",
+      "to": "2023-03-16",
       "noofdays": 2,
       "reason": "Medical Appointment",
       "status": "Approved"
@@ -368,8 +368,8 @@
       "id": 7,
       "employeeid": 8,
       "type": "Casual",
-      "from": "22/03/2023",
-      "to": "22/03/2023",
+      "from": "2023-03-14",
+      "to": "2023-03-14",
       "noofdays": 1,
       "reason": "Personal Reasons",
       "status": "Pending"
@@ -378,10 +378,30 @@
       "id": 8,
       "employeeid": 10,
       "type": "Sick",
-      "from": "10/03/2023",
-      "to": "12/03/2023",
+      "from": "2023-03-10",
+      "to": "2023-03-12",
       "noofdays": 3,
       "reason": "Admitted in hospital",
+      "status": "Approved"
+    },
+    {
+      "id": 9,
+      "employeeid": 10,
+      "type": "Sick",
+      "from": "2023-03-14",
+      "to": "2023-03-15",
+      "noofdays": 2,
+      "reason": "Medical Appointment",
+      "status": "Approved"
+    },
+    {
+      "id": 10,
+      "employeeid": 5,
+      "type": "Sick",
+      "from": "2023-03-15",
+      "to": "2023-03-16",
+      "noofdays": 2,
+      "reason": "Medical Appointment",
       "status": "Approved"
     }
   ]
