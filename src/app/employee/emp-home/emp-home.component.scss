@@ -176,6 +176,7 @@
         &:hover {
             background-color: $color-primary;
             color: $color-contrasting;
+            box-shadow: rgba(0, 0, 0, 0.74) 0px 3px 2px;
         }
     }
 }

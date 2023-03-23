@@ -75,8 +75,6 @@ export class CreateFormComponent implements OnInit, OnChanges {
   }
   saveEmpDetails() {
     if (this.createEmployeeForm.valid && this.createEmployeeForm.value.bloodgroup != 'select' && this.createEmployeeForm.value.department != 'select') {
-      console.log("Savinggg")
-      
       if (this.editId) {
         let userInfo = {
           id: this.editId,

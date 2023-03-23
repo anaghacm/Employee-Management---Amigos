@@ -14,6 +14,8 @@ export class ApiService {
   get RefreshRequired() {
     return this._refreshRequired;
   }
+
+  //users Collection
   getUsers(username:string) {
     return this._http.get('http://localhost:3000/users/?username='+username);
   }
@@ -25,16 +27,35 @@ export class ApiService {
   getAllUsers(){
     return this._http.get('http://localhost:3000/users');
   }
+
+  makeActive(userDetails:any){
+    return this._http.patch('http://localhost:3000/users/' + userDetails.id, userDetails).pipe(
+      tap(() => {
+        this.RefreshRequired.next();
+      })
+    );;
+  }
+
+
+  //Employees Collection
   getEmployees() {
     return this._http.get('http://localhost:3000/employees');
   }
 
   deleteEmployee(id: number) {
-    return this._http.delete('http://localhost:3000/employees/' + id);
+    return this._http.delete('http://localhost:3000/employees/' + id).pipe(
+      tap(() => {
+        this.RefreshRequired.next();
+      })
+    );
   }
 
   addEmployee(userDetails: any) {
-    return this._http.post('http://localhost:3000/employees', userDetails)
+    return this._http.post('http://localhost:3000/employees', userDetails).pipe(
+      tap(() => {
+        this.RefreshRequired.next();
+      })
+    );
   }
 
   editEmployee(userDetails: any) {
@@ -52,9 +73,7 @@ export class ApiService {
       })
     );
   }
-  leaveRequest(userDetails:any){
-    return this._http.post('http://localhost:3000/leavedetails', userDetails);
-  }
+
   updateProfilePic(userDetails:any){
     return this._http.patch('http://localhost:3000/employees/' + userDetails.id, userDetails).pipe(
       tap(() => {
@@ -62,9 +81,17 @@ export class ApiService {
       })
     );
   }
+
   getEmployeeById(id: number) {
     return this._http.get('http://localhost:3000/employees/' + id);
   }
+
+
+  //Leavedetails Collection
+  leaveRequest(userDetails:any){
+    return this._http.post('http://localhost:3000/leavedetails', userDetails);
+  }
+  
   getLeaveDetailsById(id:number){
     return this._http.get('http://localhost:3000/leavedetails/?employeeid=' + id);
   }
@@ -76,7 +103,12 @@ export class ApiService {
     );
   }
 
-  getLastWeekLeaveDetails(){
+  getApprovedLeaveDetails(){
     return this._http.get('http://localhost:3000/leavedetails/?status=Approved');
   }
+
+  getPendingRequest(){
+    return this._http.get('http://localhost:3000/leavedetails/?status=Pending');
+  }
+
 }

@@ -7,11 +7,11 @@
                 <form class="leave-form" [formGroup]="leaveApplicationForm" (ngSubmit)="applicationSubmit()">
                     <div class="input-div half-div">
                         <label for="" class="form-control-label">First day of absence</label>
-                        <input type="date" class="form-control" name="startdate" formControlName="startdate" (change)="checkDate()">
+                        <input type="date" class="form-control" min="{{today}}" name="startdate" formControlName="startdate" (change)="checkDate()">
                     </div>
                     <div class="input-div half-div">
                         <label for="" class="form-control-label">Last day of absence</label>
-                        <input type="date" class="form-control" name="enddate" formControlName="enddate" (change)="checkDate()">
+                        <input type="date" class="form-control" min="{{enddateMin}}" name="enddate" formControlName="enddate" (change)="checkDate()">
                     </div>
 
                     <div class="input-div">

@@ -12,14 +12,14 @@
       "username": "henry",
       "password": "def",
       "category": "hr",
-      "active": 0
+      "active": 1
     },
     {
       "id": 3,
       "username": "angel",
-      "password": "ghi",
+      "password": "ggg",
       "category": "emp",
-      "active": 1
+      "active": 0
     },
     {
       "id": 4,
@@ -40,14 +40,14 @@
       "username": "Nicholas",
       "password": "abc",
       "category": "emp",
-      "active": 0
+      "active": 1
     },
     {
       "id": 7,
       "username": "Glen",
       "password": "def",
       "category": "hr",
-      "active": 0
+      "active": 1
     },
     {
       "id": 8,
@@ -78,7 +78,7 @@
       "lastname": "Graham",
       "age": "28",
       "dob": "1992-04-03",
-      "bloodgroup": "B+",
+      "bloodgroup": "A-",
       "gender": "male",
       "email": "john@gmail.com",
       "contact": "9188721480",
@@ -87,13 +87,54 @@
       "qualification": "Post Graduation",
       "course": "ME CSE",
       "university": "CUSAT",
-      "percentage": "86",
+      "percentage": "81",
       "department": "Front End Development",
       "designation": "Associate Engineer",
       "fb": "https://www.facebook.com",
       "insta": "https://www.instagram.com",
       "linkedin": "https://www.linkedin.com",
-      "leavedetails": []
+      "leavedetails": [
+        {
+          "id": 1,
+          "employeeid": 1,
+          "type": "Sick",
+          "from": "2023-03-14",
+          "to": "2023-03-15",
+          "noofdays": 2,
+          "reason": "Medical Appointment",
+          "status": "Approved"
+        },
+        {
+          "id": 2,
+          "employeeid": 1,
+          "type": "Casual",
+          "from": "2023-03-13",
+          "to": "2023-03-13",
+          "noofdays": 1,
+          "reason": "Personal Reasons",
+          "status": "Approved"
+        },
+        {
+          "id": 3,
+          "employeeid": 1,
+          "type": "Sick",
+          "from": "2023-03-03",
+          "to": "2023-03-04",
+          "noofdays": 2,
+          "reason": "Medical Appointment",
+          "status": "Rejected"
+        },
+        {
+          "employeeid": 1,
+          "type": "Emergency",
+          "from": "2023-03-24",
+          "to": "2023-03-24",
+          "noofdays": 0.5,
+          "reason": "Personal Reasons",
+          "status": "Approved",
+          "id": 11
+        }
+      ]
     },
     {
       "id": 2,
@@ -123,17 +164,17 @@
       "firstname": "Angel",
       "lastname": "Bauch",
       "age": 24,
-      "dob": "1995-25-03",
-      "bloodgroup": "B-",
+      "dob": "1995-07-03",
+      "bloodgroup": "O-",
       "gender": "female",
       "email": "angel@gmail.com",
       "contact": "9188721473",
       "address": "12A, Church Road",
       "image": "4.jpg",
       "qualification": "Graduation",
-      "course": "Bsc CSE",
+      "course": "Bsc  CSE",
       "university": "Calicut University",
-      "percentage": 89,
+      "percentage": "87",
       "department": "Quality Analysis",
       "designation": "Junior Tester",
       "fb": "https://www.facebook.com",
@@ -169,7 +210,7 @@
       "firstname": "Kurtis",
       "lastname": "Weissnat",
       "age": 27,
-      "dob": "1994-25-03",
+      "dob": "1994-09-03",
       "bloodgroup": "A+",
       "gender": "female",
       "email": "kurtis@gmail.com",
@@ -368,11 +409,11 @@
       "id": 7,
       "employeeid": 8,
       "type": "Casual",
-      "from": "2023-03-14",
-      "to": "2023-03-14",
+      "from": "2023-03-24",
+      "to": "2023-03-24",
       "noofdays": 1,
       "reason": "Personal Reasons",
-      "status": "Pending"
+      "status": "Approved"
     },
     {
       "id": 8,
@@ -388,21 +429,51 @@
       "id": 9,
       "employeeid": 10,
       "type": "Sick",
-      "from": "2023-03-14",
-      "to": "2023-03-15",
+      "from": "2023-03-28",
+      "to": "2023-03-29",
       "noofdays": 2,
       "reason": "Medical Appointment",
-      "status": "Approved"
+      "status": "Pending"
     },
     {
       "id": 10,
       "employeeid": 5,
       "type": "Sick",
-      "from": "2023-03-15",
-      "to": "2023-03-16",
+      "from": "2023-03-23",
+      "to": "2023-03-24",
       "noofdays": 2,
       "reason": "Medical Appointment",
       "status": "Approved"
+    },
+    {
+      "employeeid": 1,
+      "type": "Emergency",
+      "from": "2023-03-24",
+      "to": "2023-03-24",
+      "noofdays": 0.5,
+      "reason": "Personal Reasons",
+      "status": "Approved",
+      "id": 11
+    },
+    {
+      "employeeid": 3,
+      "type": "Casual",
+      "from": "2023-03-29",
+      "to": "2023-03-30",
+      "noofdays": 2,
+      "reason": "Personal Reasons",
+      "status": "Approved",
+      "id": 12
+    },
+    {
+      "employeeid": 3,
+      "type": "Sick",
+      "from": "2023-04-06",
+      "to": "2023-04-06",
+      "noofdays": 0.5,
+      "reason": "Medical Appointment",
+      "status": "Rejected",
+      "id": 13
     }
   ]
 }

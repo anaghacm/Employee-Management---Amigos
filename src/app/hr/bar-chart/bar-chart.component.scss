@@ -1,17 +1,17 @@
 @import '../../../assets/scss/variables';
+@import '../../../assets/scss/mixins';
+@import '../../../assets/scss/base';
 
-.base{
+.heading {
+    font-size: $font-xxl;
+    font-weight: 500;
+    text-align: left;
+    color: $color-white;
+}
+
+.base {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
-    #data{
-        font-size: $font-md;
-        color: $color-contrasting;
-        padding: $spacer-2;
 
-        ul{
-            list-style: none;
-        }
-        
-    }
 }

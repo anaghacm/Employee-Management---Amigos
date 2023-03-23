@@ -8,10 +8,10 @@
         flex-wrap: wrap;
         justify-content: space-between;
         padding: $spacer-4 $spacer-6;
-        width: 80%;
+        width: 90%;
         margin: auto;
         background-color: $color-white;
-        box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+        
     
         .input-div {
             width: 30%;
@@ -75,12 +75,14 @@
         background-color: $color-contrasting;
         color: $color-primary;
         padding: $spacer-md $spacer-2;
+        border-radius: 50px;
         margin-left: $spacer-2;
         width: 150px;
     
         &:hover {
             background-color: $color-primary;
             color: $color-contrasting;
+            box-shadow: rgba(0, 0, 0, 0.74) 0px 3px 2px;
         }
     }
     

@@ -3,6 +3,8 @@ import { faUser, faAt, faPhoneAlt, faMapMarked, faEdit, faTrash, faGraduationCap
 import { ApiService } from 'src/app/services/api.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
+import { AppendIdPipe } from 'src/app/services/append-id.pipe';
+import { LeaveRequestComponent } from '../leave-request/leave-request.component';
 
 @Component({
   selector: 'app-empdetails',
@@ -19,10 +21,11 @@ export class EmpdetailsComponent implements OnInit {
   faGraduationCap = faGraduationCap;
   faExclamationCircle = faExclamationCircle;
   public employeesList!: any;
+  public employeeListCopy!:any;
   public editEmployee!: any;
 
 
-  constructor(private _api: ApiService, private _dialog: MatDialog) {
+  constructor(private _api: ApiService, private _dialog: MatDialog, private _appendid:AppendIdPipe) {
     this.getEmployees();
   }
 
@@ -36,6 +39,7 @@ export class EmpdetailsComponent implements OnInit {
   getEmployees() {
     this._api.getEmployees().subscribe((response) => {
       this.employeesList = response;
+      this.employeeListCopy=response;
       for (let employee of this.employeesList) {
         this._api.getLeaveDetailsById(employee.id).subscribe((response) => {
           employee.leavedetails = response;
@@ -49,6 +53,9 @@ export class EmpdetailsComponent implements OnInit {
             }
           }
         })
+      }
+      for(let employee of this.employeesList){
+        this._appendid.transform(employee)
       }
     })
 
@@ -67,7 +74,20 @@ export class EmpdetailsComponent implements OnInit {
   }
 
   getDetails(employee: any) {
-    this.editEmployee = employee;
+    let req;
+    for(let request of employee.leavedetails){
+      if(request.status == 'Pending'){
+        req=request
+      }
+    }
+    const dialogRef = this._dialog.open(LeaveRequestComponent, {
+      data: req,
+    });
+
+    dialogRef.afterClosed().subscribe(result => {});    
   }
 
+  getEmpDetails(employee:any){
+    this.editEmployee=employee
+  }
 }

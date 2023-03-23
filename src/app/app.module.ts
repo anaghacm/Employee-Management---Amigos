@@ -12,6 +12,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { AppendIdPipe } from './services/append-id.pipe';
+import { MatDialogModule } from '@angular/material/dialog';
+import { CanDeactivateConfirmComponent } from './can-deactivate-confirm/can-deactivate-confirm.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +23,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     LoginComponent,
     InfoComponent,
     ForgotPasswordComponent,
+    AppendIdPipe,
+    CanDeactivateConfirmComponent,
   ],
   imports: [
     BrowserModule,
@@ -28,9 +33,12 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     HttpClientModule,
     BrowserAnimationsModule,
     MatSnackBarModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    MatDialogModule
   ],
-  providers: [],
+  providers: [
+    AppendIdPipe
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

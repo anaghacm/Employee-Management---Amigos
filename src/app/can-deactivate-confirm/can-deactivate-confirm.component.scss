@@ -1,6 +1,4 @@
-@import '../../../assets/scss/variables';
-@import '../../../assets/scss/mixins';
-@import '../../../assets/scss/base';
+@import '../../assets/scss/variables';
 
 .confirmation {
     color: $color-primary;
@@ -9,21 +7,11 @@
         font-size: $font-xl;
         font-weight: 600;
     }
-    .mat-dialog-content{
-        font-size: $font-sm;
-        padding-bottom: $spacer-2;
-        letter-spacing: 1px;
-        p{
-            padding-top: $spacer-md;
-        }
-    }
-    .mat-dialog-actions{
-        padding-bottom: $spacer-2;
-    }
+
     .btn-control {
         background-color: $color-contrasting;
         padding: $spacer-md $spacer-3;
-        border-radius: 50px;
+        border-radius: 25px;
         border: none;
         margin-right: $spacer-2;
 

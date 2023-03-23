@@ -11,15 +11,16 @@ import { D3DoughnutComponent } from './d3-doughnut/d3-doughnut.component';
 import { EmpdetailsComponent } from './empdetails/empdetails.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
-import {MatDialogModule} from '@angular/material/dialog';
+import { MatDialogModule, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CreateFormComponent } from './create-form/create-form.component';
 import { HrFooterComponent } from './hr-footer/hr-footer.component';
 import { LeaveRequestComponent } from './leave-request/leave-request.component';
 import { D3ServiceService } from './hr-services/d3-service.service';
-import {MatMenuModule} from '@angular/material/menu';
+import { MatMenuModule } from '@angular/material/menu';
 import { BarChartComponent } from './bar-chart/bar-chart.component';
 import { GaugeChartComponent } from './gauge-chart/gauge-chart.component';
+import { EmpTableComponent } from './emp-table/emp-table.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { GaugeChartComponent } from './gauge-chart/gauge-chart.component';
     LeaveRequestComponent,
     BarChartComponent,
     GaugeChartComponent,
+    EmpTableComponent,
   ],
   imports: [
     CommonModule,
@@ -43,10 +45,13 @@ import { GaugeChartComponent } from './gauge-chart/gauge-chart.component';
     FontAwesomeModule,
     MatDialogModule,
     ReactiveFormsModule,
-    MatMenuModule,
+    MatMenuModule
   ],
-  providers:[
-    D3ServiceService
+  providers: [
+    D3ServiceService,
+    {
+      provide:MAT_DIALOG_DATA, useValue:{}
+    }
   ]
 })
 export class HrModule { }

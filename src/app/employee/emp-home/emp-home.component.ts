@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
 import { faAt, faPhoneAlt, faEdit } from '@fortawesome/free-solid-svg-icons';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { AppendIdPipe } from 'src/app/services/append-id.pipe';
 
 
 @Component({
@@ -22,7 +23,7 @@ export class EmpHomeComponent implements OnInit {
 
   public fileName!:string;
 
-  constructor(private _api: ApiService, private _snackBar: MatSnackBar) {
+  constructor(private _api: ApiService, private _snackBar: MatSnackBar, private _appendid:AppendIdPipe) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser') || '');
     this.getEmployeeById();
   }
@@ -36,6 +37,7 @@ export class EmpHomeComponent implements OnInit {
   getEmployeeById(){
     this._api.getEmployeeById(this.currentUser.id).subscribe((response) => {
       this.userInfo = response;
+        this._appendid.transform(this.userInfo)
     })
   }
   setFileName(event:any){

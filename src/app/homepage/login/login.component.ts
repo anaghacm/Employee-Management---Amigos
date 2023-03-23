@@ -33,10 +33,9 @@ export class LoginComponent implements OnInit {
       this._api.getUsers(username).subscribe((response: any) => {
         console.log(response)
         let user =response[0]
-        // let user = response.filter((user: any) => {
-        //   return user.username == username && user.password == password
-        // })
         if (user.password == password) {
+          user.active=1;
+          this._api.makeActive(user).subscribe((response)=>{})
           localStorage.setItem('currentUser', JSON.stringify(user));
           if (user.category == 'hr') {
             this._router.navigateByUrl('hr');

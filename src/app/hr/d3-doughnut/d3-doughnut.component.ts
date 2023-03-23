@@ -20,14 +20,15 @@ export class D3DoughnutComponent implements OnInit {
 
   //Variables declared for doughnut charts
   private width = 360;
-  private height = 310;
+  private height = 250;
   private svg: any;
   private colors: any;
   constructor(private d3: D3ServiceService, private _api: ApiService) {
+    this.getCount();
   }
 
   ngOnInit(): void {
-    this.getCount();
+    
   }
 
   getCount() {
@@ -42,7 +43,6 @@ export class D3DoughnutComponent implements OnInit {
           this.data[1].value += 1;
         }
       }
-      console.log(this.data)
       this.createSvg();
       this.drawChart();
     })
@@ -73,7 +73,6 @@ export class D3DoughnutComponent implements OnInit {
         return d.value;
       });
     var data_ready = pie(this.data.map((d: any) => { return d }));
-    console.log(data_ready)
 
     //Arc generator
     var segments = this.d3.d3.arc()
@@ -83,7 +82,7 @@ export class D3DoughnutComponent implements OnInit {
       .padRadius(50);
 
     var sections = this.svg.append('g')
-      .attr('transform', 'translate(175,185)')
+      .attr('transform', 'translate(150,105)')
       .selectAll('path')
       .data(data_ready);
 
@@ -92,7 +91,7 @@ export class D3DoughnutComponent implements OnInit {
       .append('path')
       .attr('d', segments)
       .attr('fill', (d:any)=>this.colors(d.data.value))
-
+      
     //Text content
     this.d3.d3.select('g')
       .selectAll('text')
@@ -106,7 +105,7 @@ export class D3DoughnutComponent implements OnInit {
 
     //Legends
     var legends = this.svg.append('g')
-      .attr('transform', 'translate(10,-20)')
+      .attr('transform', 'translate(190,170)')
       .selectAll('.legends')
       .data(data_ready);
 

@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from 'src/app/services/api.service';
+import { faUserPlus} from '@fortawesome/free-solid-svg-icons';
+import { AppendIdPipe } from 'src/app/services/append-id.pipe';
+import { MatDialog } from '@angular/material/dialog';
+import { LeaveRequestComponent } from '../leave-request/leave-request.component';
 
 @Component({
   selector: 'app-hr-home',
@@ -7,10 +12,88 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HrHomeComponent implements OnInit {
 
-  constructor() { }
+  public counter: number = 0;
+  public timeElement!: string;
+  public dateElement!: string;
+  public pendingRequests: any=[];
+  public editEmployee!: any;
+  faUserPlus=faUserPlus;
 
-  ngOnInit(): void {
+  constructor(private _api: ApiService, private _appendid:AppendIdPipe,public _dialog: MatDialog) {
+    this.getPendingRequest();
+    setInterval(() => {
+      if (this.counter < 250) {
+        this.counter += 1
+      }
+    }, 30);
   }
 
-  
+  ngOnInit(): void {
+    setInterval(() => {
+      const now = new Date();
+      this.timeElement = this.formatTime(now);
+      this.dateElement = this.formatDate(now);
+    }, 200);
+    this._api.RefreshRequired.subscribe((response) => {
+      this.getPendingRequest();
+    })
+
+  }
+
+  formatTime(date: Date) {
+    const hours12 = date.getHours() % 12 || 12;
+    const minutes = date.getMinutes();
+    const isAm = date.getHours() < 12;
+
+    return `${hours12.toString().padStart(2, "0")}:${minutes
+      .toString()
+      .padStart(2, "0")} ${isAm ? "AM" : "PM"}`;
+
+  }
+
+  formatDate(date: Date) {
+    const DAYS = [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday"
+    ];
+    const MONTHS = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December"
+    ];
+
+    return `${DAYS[date.getDay()]}, ${MONTHS[date.getMonth()]
+      } ${date.getDate()} ${date.getFullYear()}`;
+  }
+
+  getPendingRequest() {
+    this._api.getPendingRequest().subscribe((response) => {
+      this.pendingRequests = response;
+      for(let request of this.pendingRequests){
+        this._appendid.transform(request)
+      }
+    })
+  }
+
+  getDetails(req: any) {
+    const dialogRef = this._dialog.open(LeaveRequestComponent, {
+      data: req,
+    });
+
+    dialogRef.afterClosed().subscribe(result => {});    
+  }
 }

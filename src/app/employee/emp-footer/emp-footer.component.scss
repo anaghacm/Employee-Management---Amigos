@@ -2,7 +2,7 @@
 @import '../../../assets/scss/mixins';
 @import '../../../assets/scss/base';
 
-.hrfooter-module{
+.empfooter-module{
     background-color: $color-primary;
     letter-spacing: 1px;
 
@@ -66,5 +66,16 @@
         font-size: $font-xsm;
         font-weight: 400;
         opacity: 0.5;
+    }
+}
+
+@include mobile{
+    .empfooter-module{
+        .footer{
+            flex-direction: column;
+        }
+        .about-div, .contact-div, .logo-div{
+            width: 100%;
+        }
     }
 }

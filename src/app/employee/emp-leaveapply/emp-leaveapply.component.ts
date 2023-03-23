@@ -18,10 +18,24 @@ export class EmpLeaveapplyComponent implements OnInit {
 
   public currentUser!: any;
   public userInfo: any = [];
+  public today!:string;
+  public enddateMin!:string;
 
   public leaveApplicationForm!: FormGroup
 
   constructor(private _api: ApiService, private _fb: FormBuilder, private _snackBar: MatSnackBar) {
+    let date=new Date()
+    let day = date.getDate();
+    let month = date.getMonth() + 1;
+    let year = date.getFullYear();
+    if(month<10){
+      this.today=year.toString()+'-0'+month.toString()+'-'+day.toString();
+      this.enddateMin=year.toString()+'-0'+month.toString()+'-'+day.toString();
+    }
+    else{
+      this.today=year.toString()+'-'+month.toString()+'-'+day.toString();
+      this.enddateMin=year.toString()+'-'+month.toString()+'-'+day.toString();
+    }
     this.currentUser = JSON.parse(localStorage.getItem('currentUser') || '');
     this.getLeaveDetailsById();
   }
@@ -80,6 +94,9 @@ export class EmpLeaveapplyComponent implements OnInit {
   }
 
   checkDate() {
+    if(this.leaveApplicationForm.value.startdate){
+      this.enddateMin=this.leaveApplicationForm.value.startdate;
+    }
     if (this.leaveApplicationForm.value.startdate !== this.leaveApplicationForm.value.enddate) {
       this.leaveApplicationForm.get('daylength')?.disable()
     }

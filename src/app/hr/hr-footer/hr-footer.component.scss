@@ -7,20 +7,11 @@
     color: $color-white;
     letter-spacing: 1px;
     padding: $spacer-0 $spacer-6;
-    // border-top: 1px solid $color-contrasting;
-
-    // .footer-divider{
-    //     width: 100%;
-    //     height: 1px;
-    //     color: $color-contrasting;
-    //     opacity: 0.8;
-    // }
     .footer{
         display: flex;
         justify-content: space-between;
         align-items: center;
         padding: $spacer-2 $spacer-0;
-        // color: $color-white;
     }
     .logo-div{
         width: calc(100% / 3);
@@ -75,5 +66,16 @@
         font-size: $font-xsm;
         font-weight: 400;
         opacity: 0.5;
+    }
+}
+
+@include mobile{
+    .hrfooter-module{
+        .footer{
+            flex-direction: column;
+        }
+        .about-div, .contact-div, .logo-div{
+            width: 100%;
+        }
     }
 }

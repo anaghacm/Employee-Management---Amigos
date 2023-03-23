@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { faAngleDown, faUserLock } from '@fortawesome/free-solid-svg-icons';
 import { ApiService } from 'src/app/services/api.service';
@@ -8,7 +8,7 @@ import { ApiService } from 'src/app/services/api.service';
   templateUrl: './emp-navbar.component.html',
   styleUrls: ['./emp-navbar.component.scss']
 })
-export class EmpNavbarComponent implements OnInit {
+export class EmpNavbarComponent implements OnInit, OnDestroy {
 
   faAngleDown = faAngleDown;
   faUserLock = faUserLock;
@@ -21,6 +21,14 @@ export class EmpNavbarComponent implements OnInit {
   constructor(private _router: Router, private _api: ApiService) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser') || '');
     this.getEmployeeById();
+  }
+  ngOnDestroy(): void {
+    localStorage.clear();
+      let user={
+        id:this.currentUser.id,
+        active:0
+      }
+      this._api.makeActive(user).subscribe((response)=>{})
   }
 
   ngOnInit(): void {
@@ -36,7 +44,7 @@ export class EmpNavbarComponent implements OnInit {
     })
   }
   logout() {
-    localStorage.clear();
+   
     this._router.navigateByUrl('');
   }
 

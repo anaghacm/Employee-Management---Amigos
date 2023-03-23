@@ -1,4 +1,5 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ApiService } from 'src/app/services/api.service';
 
 @Component({
@@ -6,28 +7,15 @@ import { ApiService } from 'src/app/services/api.service';
   templateUrl: './leave-request.component.html',
   styleUrls: ['./leave-request.component.scss']
 })
-export class LeaveRequestComponent implements OnInit, OnChanges {
+export class LeaveRequestComponent implements OnInit {
 
-  @Input() editEmployee!: any;
-  public requestArray:any=[];
 
-  constructor(private _api:ApiService) { }
+  constructor(private _api:ApiService, @Inject(MAT_DIALOG_DATA) public data: any,) {
+
+   }
 
   ngOnInit(): void {
   }
-
-  ngOnChanges(changes: SimpleChanges) {
-    if (changes['editEmployee'].currentValue != undefined) {
-      
-      for(let request of this.editEmployee.leavedetails){
-        
-        if(request.status == 'Pending'){
-          this.requestArray.push(request)
-        }
-      }
-    }
-  }
-
   respondRequest(requestId:number, status:string){
     let response={
       id:requestId,
