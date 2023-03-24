@@ -211,7 +211,7 @@
       "lastname": "Weissnat",
       "age": 27,
       "dob": "1994-09-03",
-      "bloodgroup": "A+",
+      "bloodgroup": "A-",
       "gender": "female",
       "email": "kurtis@gmail.com",
       "contact": "9188721473",
@@ -226,7 +226,28 @@
       "fb": "https://www.facebook.com",
       "insta": "https://www.instagram.com",
       "linkedin": "https://www.linkedin.com",
-      "leavedetails": []
+      "leavedetails": [
+        {
+          "id": 5,
+          "employeeid": 5,
+          "type": "Sick",
+          "from": "2023-03-16",
+          "to": "2023-03-18",
+          "noofdays": 3,
+          "reason": "Admitted in hospital",
+          "status": "Approved"
+        },
+        {
+          "id": 10,
+          "employeeid": 5,
+          "type": "Sick",
+          "from": "2023-03-23",
+          "to": "2023-03-24",
+          "noofdays": 2,
+          "reason": "Medical Appointment",
+          "status": "Approved"
+        }
+      ]
     },
     {
       "id": 6,

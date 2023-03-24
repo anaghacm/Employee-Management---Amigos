@@ -1,38 +1,38 @@
-<nav class="navbar navbar-expand-lg navbar-dark">
-    <div class="container">
-        <a class="navbar-brand" routerLink="/hr"><img src="../../../assets/images/white-logo.png" width="150px"
-                alt=""></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02"
-            aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-            <ul class="navbar-nav ms-auto me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link" aria-current="page" routerLink="/hr" routerLinkActive="active"
-                        [routerLinkActiveOptions]="{exact:true}">Dashboard</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" routerLink="empdetails" routerLinkActive="active">Employee Details</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" routerLink="createemp" routerLinkActive="active">Create Employee</a>
-                </li>
-            
-            </ul>
-            <div class="user-div">
-                <div class="pic">
-                    <img src="../../../assets/images/{{userInfo.image}}" alt="">
-                </div>
-                <div class="name">
-                    <button mat-button [matMenuTriggerFor]="Menu">{{userInfo.firstname}} {{userInfo.lastname}}<fa-icon
-                            class="logout-icon" [icon]="faAngleDown"></fa-icon></button>
-                    <mat-menu #Menu="matMenu">
-                        <button mat-menu-item (click)="logout()"><fa-icon class="pe-3" [icon]="faUserLock"></fa-icon>Logout</button>
-                    </mat-menu>
-                </div>
-            </div>
-        </div>
-
+<div class="sidenav" [ngClass]="collapsed?'':'sidenav-collapsed'">
+    <div class="logo-container">
+        <button class="logo" *ngIf="!collapsed" (click)="toggleCollapse()"><img class="log-img"
+                src="../../../assets/images/logo-icon.png" alt=""></button>
+        <button class="logo" *ngIf="collapsed" (click)="toggleCollapse()"><img class="log-img"
+                src="../../../assets/images/white-logo.png" alt=""></button>
+        <button class="btn-close btn-close-white" (click)="closeSideNav()" *ngIf="collapsed"></button>
     </div>
-</nav>
+    <div class="divider"></div>
+    <ul class="sidenav-nav">
+        <li class="sidenav-nav-item" *ngFor="let data of navData">
+            <a class="sidenav-nav-link" [routerLink]="[data.routerLink]" routerLinkActive="active"
+                [routerLinkActiveOptions]="{exact:true}">
+                <fa-icon class="sidenav-link-icon" [icon]="data.icon"></fa-icon>
+                <span class="sidenav-link-text" *ngIf="collapsed">{{data.label}}</span>
+            </a>
+        </li>
+    </ul>
+    <div class="user-div">
+        <div class="pic" *ngIf="!collapsed" mat-icon-button [matMenuTriggerFor]="menu">
+            <img class="pp" src="../../../assets/images/{{userInfo.image}}" alt="">
+        </div>
+        <ng-container *ngIf="collapsed">
+            <div class="pic">
+                <img class="pp" src="../../../assets/images/{{userInfo.image}}" alt="">
+            </div>
+            <button class="menu-btn" mat-icon-button [matMenuTriggerFor]="menu">
+                {{userInfo.firstname}} {{userInfo.lastname}}<fa-icon class="logout-icon" [icon]="faAngleDown"></fa-icon>
+            </button>
+        </ng-container>
+        <mat-menu #menu="matMenu" xPosition="after" [overlapTrigger]="false">
+            <button mat-menu-item (click)="logout()">
+                <fa-icon class="pe-4 py-0" [icon]="faSignOutAlt"></fa-icon>
+                <span class="logout-content pe-3 py-0">Logout</span>
+            </button>
+        </mat-menu>
+    </div>
+</div>

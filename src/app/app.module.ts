@@ -14,7 +14,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AppendIdPipe } from './services/append-id.pipe';
 import { MatDialogModule } from '@angular/material/dialog';
-import { CanDeactivateConfirmComponent } from './can-deactivate-confirm/can-deactivate-confirm.component';
+import { CanDeactivateConfirmComponent } from './shared/can-deactivate-confirm/can-deactivate-confirm.component';
 
 @NgModule({
   declarations: [

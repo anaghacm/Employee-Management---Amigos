@@ -1,8 +1,13 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, EventEmitter, HostListener, OnDestroy, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
-import { faAngleDown, faUserLock, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faAngleDown, faUserLock, faUser, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import { ApiService } from 'src/app/services/api.service';
+import { navbarData } from './nav-data';
 
+interface sideNavToggle {
+  screenWidth : number,
+  collapsed : boolean
+}
 @Component({
   selector: 'app-hr-navbar',
   templateUrl: './hr-navbar.component.html',
@@ -10,9 +15,15 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class HrNavbarComponent implements OnInit, OnDestroy {
 
+  collapsed=true;
+  navData = navbarData;
+  screenWidth =0;
+  @Output() onToggleSideNav: EventEmitter<sideNavToggle> = new EventEmitter();
+
   faAngleDown=faAngleDown;
   faUserLock=faUserLock;
   faUser=faUser;
+  faSignOutAlt=faSignOutAlt;
 
   public currentUser!: any;
   public userInfo: any={
@@ -24,7 +35,17 @@ export class HrNavbarComponent implements OnInit, OnDestroy {
     this.getEmployeeById();
   }
 
+  @HostListener('window:resize', ['$event'])
+  onResize(event:any){
+    this.screenWidth=window.innerWidth;
+    if(this.screenWidth<=768){
+      this.collapsed=false;
+      this.onToggleSideNav.emit({collapsed:this.collapsed, screenWidth:this.screenWidth})
+    }
+  }
   ngOnInit(): void {
+    this.screenWidth=window.innerWidth;
+
     this._api.RefreshRequired.subscribe((response) => {
       this.getEmployeeById();
     })
@@ -47,5 +68,13 @@ export class HrNavbarComponent implements OnInit, OnDestroy {
     this._router.navigateByUrl('');
   }
  
+  toggleCollapse(){
+    this.collapsed=!this.collapsed;
+    this.onToggleSideNav.emit({collapsed:this.collapsed, screenWidth:this.screenWidth})
+  }
+  closeSideNav(){
+    this.collapsed=false;
+    this.onToggleSideNav.emit({collapsed:this.collapsed, screenWidth:this.screenWidth})
+  }
   
 }

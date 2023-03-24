@@ -21,6 +21,8 @@ import { MatMenuModule } from '@angular/material/menu';
 import { BarChartComponent } from './bar-chart/bar-chart.component';
 import { GaugeChartComponent } from './gauge-chart/gauge-chart.component';
 import { EmpTableComponent } from './emp-table/emp-table.component';
+import { HrProfileComponent } from './hr-profile/hr-profile.component';
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -38,6 +40,7 @@ import { EmpTableComponent } from './emp-table/emp-table.component';
     BarChartComponent,
     GaugeChartComponent,
     EmpTableComponent,
+    HrProfileComponent,
   ],
   imports: [
     CommonModule,
@@ -45,7 +48,8 @@ import { EmpTableComponent } from './emp-table/emp-table.component';
     FontAwesomeModule,
     MatDialogModule,
     ReactiveFormsModule,
-    MatMenuModule
+    MatMenuModule,
+    MatIconModule
   ],
   providers: [
     D3ServiceService,

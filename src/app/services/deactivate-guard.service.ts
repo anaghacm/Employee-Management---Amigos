@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { CanDeactivate } from '@angular/router';
 import { Observable } from 'rxjs';
-import { CanDeactivateConfirmComponent } from '../can-deactivate-confirm/can-deactivate-confirm.component';
+import { CanDeactivateConfirmComponent } from '../shared/can-deactivate-confirm/can-deactivate-confirm.component';
 import { EmpDashboardComponent } from '../employee/emp-dashboard/emp-dashboard.component';
 import { HrDashboardComponent } from '../hr/hr-dashboard/hr-dashboard.component';
 import { ApiService } from './api.service';

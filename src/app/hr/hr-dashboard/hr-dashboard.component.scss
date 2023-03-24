@@ -1,12 +1,21 @@
 @import '../../../assets/scss/variables';
+@import '../../../assets/scss/mixins';
+@import '../../../assets/scss/base';
 
-mat-drawer{
-    background-color: $color-primary;
-    width: 250px;
-    position: fixed;
-    left: 0;
+.base-body{
+    width: calc(100% - 250px);
+    height: 100%;
+    margin-left: 250px;
+    z-index: 0;
+    // position: relative;
     top: 0;
+    transition: all 0.5s ease;
 }
-mat-drawer-content{
-    padding: $spacer-0;
+.body-trimmed{
+    width: calc(100% - 250px);
+    margin-left: 250px;
+}
+.body-md-screen{
+    width: calc(100% - 75px);
+    margin-left: 75px;
 }

@@ -4,6 +4,7 @@ import { HrCreateempComponent } from './hr-createemp/hr-createemp.component';
 import { HrDashboardComponent } from './hr-dashboard/hr-dashboard.component';
 import { HrEmpdetailsComponent } from './hr-empdetails/hr-empdetails.component';
 import { HrHomeComponent } from './hr-home/hr-home.component';
+import { HrProfileComponent } from './hr-profile/hr-profile.component';
 
 const routes: Routes = [
   {
@@ -17,6 +18,9 @@ const routes: Routes = [
       },
       {
         path:'createemp', component:HrCreateempComponent
+      },
+      {
+        path:'profile', component:HrProfileComponent
       }
     ]
   }
