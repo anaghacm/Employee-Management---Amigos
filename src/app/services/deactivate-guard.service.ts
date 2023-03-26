@@ -15,8 +15,7 @@ export class DeactivateGuardService implements CanDeactivate<HrDashboardComponen
   constructor(private _dialog: MatDialog, private _api:ApiService) { }
 
   canDeactivate(component: HrDashboardComponent | EmpDashboardComponent): Observable<boolean> {
-    // return confirm("Are you sure you want to logout?");
-    // let currentUser = JSON.parse(localStorage.getItem('currentUser') || '');
+    //Call the dialog box to confirm log out
     let dialogRef = this._dialog.open(CanDeactivateConfirmComponent)
     return dialogRef.afterClosed();
   }

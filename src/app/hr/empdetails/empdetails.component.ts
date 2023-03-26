@@ -24,12 +24,13 @@ export class EmpdetailsComponent implements OnInit {
   public employeeListCopy!:any;
   public editEmployee!: any;
 
-
   constructor(private _api: ApiService, private _dialog: MatDialog, private _appendid:AppendIdPipe) {
+    //Get employee details
     this.getEmployees();
   }
 
   ngOnInit(): void {
+    //Refresh details on update
     this._api.RefreshRequired.subscribe((response) => {
       this.getEmployees();
     })
@@ -37,9 +38,12 @@ export class EmpdetailsComponent implements OnInit {
   }
 
   getEmployees() {
+    //Get employee details
     this._api.getEmployees().subscribe((response) => {
       this.employeesList = response;
       this.employeeListCopy=response;
+
+      //Attach the leave details with employee personal data
       for (let employee of this.employeesList) {
         this._api.getLeaveDetailsById(employee.id).subscribe((response) => {
           employee.leavedetails = response;
@@ -54,14 +58,17 @@ export class EmpdetailsComponent implements OnInit {
           }
         })
       }
+
+      //Generating Amigos id from employee id using Pipe
       for(let employee of this.employeesList){
         this._appendid.transform(employee)
       }
     })
 
   }
-  deleteEmployee(id: number, name: string) {
 
+  //Delete employee option
+  deleteEmployee(id: number, name: string) {
     let dialogRef = this._dialog.open(ConfirmationDialogComponent)
     dialogRef.afterClosed().subscribe((response) => {
       if (response == "true") {
@@ -73,6 +80,7 @@ export class EmpdetailsComponent implements OnInit {
     })
   }
 
+  //Get the pending leave requests if any
   getDetails(employee: any) {
     let req;
     for(let request of employee.leavedetails){
@@ -87,7 +95,9 @@ export class EmpdetailsComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {});    
   }
 
+  //Set the variable for passing into edit modal
   getEmpDetails(employee:any){
     this.editEmployee=employee
+    this.editEmployee.leavedetails=[]
   }
 }

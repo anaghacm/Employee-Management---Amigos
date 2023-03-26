@@ -31,11 +31,15 @@ export class HrNavbarComponent implements OnInit, OnDestroy {
   };
 
   constructor(private _router:Router, private _api: ApiService) { 
+    //Getting the current user ID
     this.currentUser = JSON.parse(localStorage.getItem('currentUser') || '');
+    //get employee details by ID
     this.getEmployeeById();
   }
 
+  //Get the window size on resize
   @HostListener('window:resize', ['$event'])
+  //Setting variables and emit the event along with newly set variables
   onResize(event:any){
     this.screenWidth=window.innerWidth;
     if(this.screenWidth<=768){
@@ -43,15 +47,19 @@ export class HrNavbarComponent implements OnInit, OnDestroy {
       this.onToggleSideNav.emit({collapsed:this.collapsed, screenWidth:this.screenWidth})
     }
   }
+
   ngOnInit(): void {
+    //Screen width set to current inner width
     this.screenWidth=window.innerWidth;
 
+    //Refresh the employee information based on db update
     this._api.RefreshRequired.subscribe((response) => {
       this.getEmployeeById();
     })
   }
 
   ngOnDestroy(): void {
+    //Clearing local storage and setting active varable in db on destroy
     localStorage.clear();
       let user={
         id:this.currentUser.id,
@@ -59,19 +67,26 @@ export class HrNavbarComponent implements OnInit, OnDestroy {
       }
       this._api.makeActive(user).subscribe((response)=>{})
   }
+
+  //Get employee details by ID
   getEmployeeById(){
     this._api.getEmployeeById(this.currentUser.id).subscribe((response) => {
       this.userInfo = response;
     })
   }
+
+  //Logout navigate function
   logout(){
     this._router.navigateByUrl('');
   }
  
+  //Toggle collapsed variable on button click
   toggleCollapse(){
     this.collapsed=!this.collapsed;
     this.onToggleSideNav.emit({collapsed:this.collapsed, screenWidth:this.screenWidth})
   }
+
+  //Close the side nav button
   closeSideNav(){
     this.collapsed=false;
     this.onToggleSideNav.emit({collapsed:this.collapsed, screenWidth:this.screenWidth})

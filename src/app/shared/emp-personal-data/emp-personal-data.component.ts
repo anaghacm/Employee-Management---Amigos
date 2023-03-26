@@ -12,21 +12,24 @@ import { faEdit } from '@fortawesome/free-solid-svg-icons';
 })
 export class EmpPersonalDataComponent implements OnInit {
 
-  faEdit=faEdit;
+  faEdit = faEdit;
   public currentUser!: any;
   public userInfo: any;
   public personalDataForm!: FormGroup;
 
   constructor(private _api: ApiService, private _fb: FormBuilder, private _snackBar: MatSnackBar) {
+    //Get the current user ID
     this.currentUser = JSON.parse(localStorage.getItem('currentUser') || '');
+    //Get employee details by ID
     this.getEmployeeById();
-   }
+  }
 
   ngOnInit(): void {
+    //Refresh data based on db update
     this._api.RefreshRequired.subscribe((response) => {
       this.getEmployeeById();
     })
-
+    //Personal data form definition
     this.personalDataForm = this._fb.group({
       firstname: ['', Validators.required],
       lastname: ['', Validators.required],
@@ -43,12 +46,15 @@ export class EmpPersonalDataComponent implements OnInit {
     })
   }
 
-  getEmployeeById(){
+   //Get employee details by ID
+  getEmployeeById() {
     this._api.getEmployeeById(this.currentUser.id).subscribe((response) => {
       this.userInfo = response;
       this.displayResult()
     })
   }
+
+  //Load values tha are already stored in db
   displayResult() {
     this.personalDataForm.get('firstname')?.setValue(this.userInfo.firstname);
     this.personalDataForm.get('lastname')?.setValue(this.userInfo.lastname);
@@ -63,45 +69,49 @@ export class EmpPersonalDataComponent implements OnInit {
     this.personalDataForm.get('instaid')?.setValue(this.userInfo.insta);
     this.personalDataForm.get('linkedinid')?.setValue(this.userInfo.linkedin);
     this.personalDataForm.disable()
-    document.getElementById('btnpersonal')?.style.setProperty("display","none")
+    document.getElementById('btnpersonal')?.style.setProperty("display", "none")
   }
 
-  editForm(){
+  //Make the form editable
+  editForm() {
     this.personalDataForm.enable()
-    document.getElementById('btnpersonal')?.style.setProperty("display","block")
+    document.getElementById('btnpersonal')?.style.setProperty("display", "block")
   }
-  saveDetails(){
-    if(this.personalDataForm.valid){
-      let userDetails={
-        id:this.userInfo.id,
-        firstname:this.personalDataForm.value.firstname,
-        lastname:this.personalDataForm.value.lastname,
-        age:this.personalDataForm.value.age,
-        dob:this.personalDataForm.value.dob,
-        bloodgroup:this.personalDataForm.value.bloodgroup,
-        gender:this.personalDataForm.value.gender,
-        email:this.personalDataForm.value.email,
-        contact:this.personalDataForm.value.contact,
-        address:this.personalDataForm.value.address,
-        fb:this.personalDataForm.value.fbid,
-        insta:this.personalDataForm.value.instaid,
-        linkedin:this.personalDataForm.value.linkedinid
+
+  //Save the details to db
+  saveDetails() {
+    if (this.personalDataForm.valid) {
+      let userDetails = {
+        id: this.userInfo.id,
+        firstname: this.personalDataForm.value.firstname,
+        lastname: this.personalDataForm.value.lastname,
+        age: this.personalDataForm.value.age,
+        dob: this.personalDataForm.value.dob,
+        bloodgroup: this.personalDataForm.value.bloodgroup,
+        gender: this.personalDataForm.value.gender,
+        email: this.personalDataForm.value.email,
+        contact: this.personalDataForm.value.contact,
+        address: this.personalDataForm.value.address,
+        fb: this.personalDataForm.value.fbid,
+        insta: this.personalDataForm.value.instaid,
+        linkedin: this.personalDataForm.value.linkedinid
       }
-      this._api.updatePersonalInfo(userDetails).subscribe((response)=>{
+      this._api.updatePersonalInfo(userDetails).subscribe((response) => {
         this._snackBar.open("Updated successfully", "", {
           duration: 2000,
           panelClass: ['success-snackbar']
         });
       })
       this.personalDataForm.disable()
-      document.getElementById('btnpersonal')?.style.setProperty("display","none")
+      document.getElementById('btnpersonal')?.style.setProperty("display", "none")
     }
-    
+
   }
 
-  cancel(){
+  //Cancel with out editing
+  cancel() {
     this.personalDataForm.disable()
-      document.getElementById('btnpersonal')?.style.setProperty("display","none")
+    document.getElementById('btnpersonal')?.style.setProperty("display", "none")
   }
 
 }

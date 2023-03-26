@@ -14,12 +14,10 @@ export class LoginComponent implements OnInit {
   public showPassword: boolean = false;
   public loginForm!: FormGroup;
   constructor(private _fb: FormBuilder, private _router: Router, private _api: ApiService, private _snackBar: MatSnackBar) {
-    // _api.getUsers().subscribe((response)=>{
-    //   console.log(response)
-    // });
   }
 
   ngOnInit(): void {
+    //Login form definition
     this.loginForm = this._fb.group({
       username: ['', Validators.required],
       password: ['', Validators.required]
@@ -27,6 +25,7 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
+    //Login function
     if (this.loginForm.valid) {
       let username = this.loginForm.value.username;
       let password = this.loginForm.value.password;
@@ -56,6 +55,7 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  //Password vilibility change
   passwordVisibility() {
     this.showPassword = !this.showPassword;
   }

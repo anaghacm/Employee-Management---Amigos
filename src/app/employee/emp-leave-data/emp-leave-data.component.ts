@@ -8,10 +8,12 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class EmpLeaveDataComponent implements OnInit {
 
+  //Variables declaration
   public currentUser!: any;
   public userInfo: any=[];
 
   constructor(private _api: ApiService) {
+    //Get the current user ID
     this.currentUser = JSON.parse(localStorage.getItem('currentUser') || '');
     this.getLeaveDetailsById();
   }
@@ -19,6 +21,7 @@ export class EmpLeaveDataComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  //Get leave details by ID
   getLeaveDetailsById() {
     this._api.getLeaveDetailsById(this.currentUser.id).subscribe((response) => {
       this.userInfo = response;

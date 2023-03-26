@@ -16,6 +16,8 @@ export class LeaveRequestComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  //Submit the response to leave request submitted by employee
   respondRequest(requestId:number, status:string){
     let response={
       id:requestId,

@@ -17,15 +17,19 @@ export class EmpAcademicDataComponent implements OnInit {
   public academicDataForm!: FormGroup;
 
   constructor(private _api: ApiService, private _fb: FormBuilder, private _snackBar: MatSnackBar) {
+    //Get the current user ID
     this.currentUser = JSON.parse(localStorage.getItem('currentUser') || '');
+    //Get employee details by ID
     this.getEmployeeById();
   }
 
   ngOnInit(): void {
+    //Refresh data based on db update
     this._api.RefreshRequired.subscribe((response) => {
       this.getEmployeeById();
     })
 
+    //Academic data form definition
     this.academicDataForm = this._fb.group({
       qualification: ['', Validators.required],
       course: ['', Validators.required],
@@ -34,13 +38,15 @@ export class EmpAcademicDataComponent implements OnInit {
     })
   }
 
-
+  //Get employee details by ID
   getEmployeeById() {
     this._api.getEmployeeById(this.currentUser.id).subscribe((response) => {
       this.userInfo = response;
       this.displayResult()
     })
   }
+
+  //Load values tha are already stored in db
   displayResult() {
     this.academicDataForm.get('qualification')?.setValue(this.userInfo.qualification);
     this.academicDataForm.get('course')?.setValue(this.userInfo.course);
@@ -50,10 +56,13 @@ export class EmpAcademicDataComponent implements OnInit {
     document.getElementById('btnacademic')?.style.setProperty("display", "none");
   }
 
+  //Make the form editable
   editForm() {
     this.academicDataForm.enable();
     document.getElementById('btnacademic')?.style.setProperty("display", "block");
   }
+
+  //Save the details to db
   saveDetails() {
     if(this.academicDataForm.valid){
       let userDetails = {
@@ -75,6 +84,7 @@ export class EmpAcademicDataComponent implements OnInit {
     }
   }
 
+  //Cancel with out editing
   cancel(){
     this.academicDataForm.disable()
       document.getElementById('btnacademic')?.style.setProperty("display", "none")

@@ -17,6 +17,7 @@ export class ForgotPasswordComponent implements OnInit {
   constructor(private _fb: FormBuilder, private _router: Router, private _api: ApiService, private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
+    //Reset password form definition
     this.resetPasswordForm = this._fb.group({
       username: ['', Validators.required],
       password: ['', Validators.required],
@@ -24,6 +25,7 @@ export class ForgotPasswordComponent implements OnInit {
     })
   }
 
+  //Password visibility change
   passwordVisibility() {
     this.showPassword = !this.showPassword;
   }
@@ -31,6 +33,7 @@ export class ForgotPasswordComponent implements OnInit {
     this.showCPassword = !this.showCPassword;
   }
 
+  //Reset password function
   resetPassword() {
     if (this.resetPasswordForm.valid) {
       let username = this.resetPasswordForm.value.username;

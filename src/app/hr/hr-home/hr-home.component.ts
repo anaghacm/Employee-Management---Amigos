@@ -20,7 +20,10 @@ export class HrHomeComponent implements OnInit {
   faUserPlus=faUserPlus;
 
   constructor(private _api: ApiService, private _appendid:AppendIdPipe,public _dialog: MatDialog) {
+    //Getting the pending leave requests
     this.getPendingRequest();
+
+    //Counter - No. of employees
     setInterval(() => {
       if (this.counter < 250) {
         this.counter += 1
@@ -29,17 +32,22 @@ export class HrHomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    //Date and time display
     setInterval(() => {
       const now = new Date();
       this.timeElement = this.formatTime(now);
       this.dateElement = this.formatDate(now);
     }, 200);
+
+    //Refresh leave request data on db update
     this._api.RefreshRequired.subscribe((response) => {
       this.getPendingRequest();
     })
 
   }
 
+  //Format current time (HH:MM AM/PM)
   formatTime(date: Date) {
     const hours12 = date.getHours() % 12 || 12;
     const minutes = date.getMinutes();
@@ -51,6 +59,7 @@ export class HrHomeComponent implements OnInit {
 
   }
 
+  //Format date (Day, Month Date Year)
   formatDate(date: Date) {
     const DAYS = [
       "Sunday",
@@ -80,6 +89,7 @@ export class HrHomeComponent implements OnInit {
       } ${date.getDate()} ${date.getFullYear()}`;
   }
 
+  //Getting pending leave requests from db
   getPendingRequest() {
     this._api.getPendingRequest().subscribe((response) => {
       this.pendingRequests = response;
@@ -89,6 +99,7 @@ export class HrHomeComponent implements OnInit {
     })
   }
 
+  //Call the mat dialog box to submit the response
   getDetails(req: any) {
     const dialogRef = this._dialog.open(LeaveRequestComponent, {
       data: req,

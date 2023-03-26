@@ -24,6 +24,7 @@ export class EmpLeaveapplyComponent implements OnInit {
   public leaveApplicationForm!: FormGroup
 
   constructor(private _api: ApiService, private _fb: FormBuilder, private _snackBar: MatSnackBar) {
+    //Get current date
     let date=new Date()
     let day = date.getDate();
     let month = date.getMonth() + 1;
@@ -36,11 +37,14 @@ export class EmpLeaveapplyComponent implements OnInit {
       this.today=year.toString()+'-'+month.toString()+'-'+day.toString();
       this.enddateMin=year.toString()+'-'+month.toString()+'-'+day.toString();
     }
+
+    //Get current user ID
     this.currentUser = JSON.parse(localStorage.getItem('currentUser') || '');
     this.getLeaveDetailsById();
   }
 
   ngOnInit(): void {
+    //Form definition
     this.leaveApplicationForm = this._fb.group({
       startdate: ['', Validators.required],
       enddate: ['', Validators.required],
@@ -48,18 +52,22 @@ export class EmpLeaveapplyComponent implements OnInit {
       leavetype: ['select', Validators.required],
       reason: ['', Validators.required]
     })
+    //Disable the fullday/ halfday option on load 
     this.leaveApplicationForm.get('daylength')?.disable()
    
   }
 
+  //Get leave history by ID
   getLeaveDetailsById() {
     this._api.getLeaveDetailsById(this.currentUser.id).subscribe((response) => {
       this.userInfo = response;
     })
   }
 
+  //Submit the application form
   applicationSubmit() {
     if (this.leaveApplicationForm.valid) {
+      //Get no. of days
       let nodays;
       let startdate = new Date(this.leaveApplicationForm.value.startdate)
       let enddate = new Date(this.leaveApplicationForm.value.enddate)
@@ -69,6 +77,8 @@ export class EmpLeaveapplyComponent implements OnInit {
       else {
         nodays = Math.ceil((enddate.getTime() - startdate.getTime()) / (1000 * 60 * 60 * 24)) + 1;
       }
+
+      //Submit request
       let leaveRequest = {
         employeeid: this.currentUser.id,
         type: this.leaveApplicationForm.value.leavetype,
@@ -93,6 +103,7 @@ export class EmpLeaveapplyComponent implements OnInit {
     }
   }
 
+  //Disable/enable day length option based on date selection
   checkDate() {
     if(this.leaveApplicationForm.value.startdate){
       this.enddateMin=this.leaveApplicationForm.value.startdate;
@@ -105,6 +116,7 @@ export class EmpLeaveapplyComponent implements OnInit {
     }
   }
 
+  //Reset form
   resetForm(){
     this.leaveApplicationForm.reset({
       daylength: 'fullday',

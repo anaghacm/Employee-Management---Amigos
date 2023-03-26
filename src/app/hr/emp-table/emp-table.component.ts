@@ -10,19 +10,24 @@ import { AppendIdPipe } from 'src/app/services/append-id.pipe';
 export class EmpTableComponent implements OnInit {
 
   public employeeList:any
-  constructor(private _api:ApiService, private _appendid:AppendIdPipe) { 
+  constructor(private _api:ApiService, private _appendid:AppendIdPipe) {
+    //Get all employee details 
     this.getEmployees();
   }
 
   ngOnInit(): void {
+    //Update table on refresh
     this._api.RefreshRequired.subscribe((response) => {
       this.getEmployees();
     })
   }
 
   getEmployees(){
+    //Get employees details
     this._api.getEmployees().subscribe((response)=>{
-      this.employeeList=response
+      this.employeeList=response;
+      
+      //Append employee id as Amigos ID using pipe
       for(let employee of this.employeeList){
         this._appendid.transform(employee)
       }

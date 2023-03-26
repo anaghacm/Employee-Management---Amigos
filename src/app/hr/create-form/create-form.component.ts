@@ -20,6 +20,7 @@ export class CreateFormComponent implements OnInit, OnChanges {
   }
 
   ngOnInit(): void {
+    //Create form definition
     this.createEmployeeForm = this._fb.group({
       firstname: ['', Validators.required],
       lastname: ['', Validators.required],
@@ -43,7 +44,9 @@ export class CreateFormComponent implements OnInit, OnChanges {
     })
 
   }
+
   ngOnChanges(changes: SimpleChanges) {
+    //Check the Input() varibale change
     if (changes['editEmployee'].currentValue != undefined) {
       this.createEmployeeForm.get('firstname')?.setValue(this.editEmployee.firstname);
       this.createEmployeeForm.get('lastname')?.setValue(this.editEmployee.lastname);
@@ -68,13 +71,18 @@ export class CreateFormComponent implements OnInit, OnChanges {
       this.leaveDetails=this.editEmployee.leavedetails;
     }
   }
+
+  //Set file name on choose file
   setFileName(event: any) {
     if (event.target.files.length > 0) {
       this.fileName = event.target.files[0].name;
     }
   }
+
+  
   saveEmpDetails() {
     if (this.createEmployeeForm.valid && this.createEmployeeForm.value.bloodgroup != 'select' && this.createEmployeeForm.value.department != 'select') {
+      //If employee edit call in modal
       if (this.editId) {
         let userInfo = {
           id: this.editId,
@@ -104,6 +112,7 @@ export class CreateFormComponent implements OnInit, OnChanges {
         })
       }
       else {
+        //Creating a new employee details
         let userInfo = {
           firstname: this.createEmployeeForm.value.firstname,
           lastname: this.createEmployeeForm.value.lastname,
@@ -142,6 +151,7 @@ export class CreateFormComponent implements OnInit, OnChanges {
     }
   }
 
+  //Reset form details
   resetForm() {
     this.createEmployeeForm.reset({
       bloodgroup: 'select',

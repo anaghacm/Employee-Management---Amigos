@@ -1,4 +1,4 @@
-import { faHome, faUsers, faUserPlus, faFile } from "@fortawesome/free-solid-svg-icons";
+import { faHome, faUsers, faUserPlus, faUser } from "@fortawesome/free-solid-svg-icons";
 
 export const navbarData = [
     {
@@ -18,7 +18,7 @@ export const navbarData = [
     },
     {
         routerLink:'profile',
-        icon:faFile,
+        icon:faUser,
         label:'Profile'
     },
     // {

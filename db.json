@@ -5,7 +5,7 @@
       "username": "john",
       "password": "abc",
       "category": "emp",
-      "active": 0
+      "active": 1
     },
     {
       "id": 2,
@@ -37,38 +37,38 @@
     },
     {
       "id": 6,
-      "username": "Nicholas",
+      "username": "nicholas",
       "password": "abc",
       "category": "emp",
       "active": 1
     },
     {
       "id": 7,
-      "username": "Glen",
+      "username": "glen",
       "password": "def",
       "category": "hr",
       "active": 1
     },
     {
       "id": 8,
-      "username": "Clementina",
+      "username": "clementina",
       "password": "ghi",
       "category": "emp",
       "active": 1
     },
     {
       "id": 9,
-      "username": "Ervin",
+      "username": "ervin",
       "password": "jkl",
       "category": "emp",
       "active": 0
     },
     {
       "id": 10,
-      "username": "Leanna",
+      "username": "leanna",
       "password": "mno",
       "category": "hr",
-      "active": 1
+      "active": 0
     }
   ],
   "employees": [
@@ -87,54 +87,13 @@
       "qualification": "Post Graduation",
       "course": "ME CSE",
       "university": "CUSAT",
-      "percentage": "81",
+      "percentage": "80",
       "department": "Front End Development",
       "designation": "Associate Engineer",
       "fb": "https://www.facebook.com",
       "insta": "https://www.instagram.com",
       "linkedin": "https://www.linkedin.com",
-      "leavedetails": [
-        {
-          "id": 1,
-          "employeeid": 1,
-          "type": "Sick",
-          "from": "2023-03-14",
-          "to": "2023-03-15",
-          "noofdays": 2,
-          "reason": "Medical Appointment",
-          "status": "Approved"
-        },
-        {
-          "id": 2,
-          "employeeid": 1,
-          "type": "Casual",
-          "from": "2023-03-13",
-          "to": "2023-03-13",
-          "noofdays": 1,
-          "reason": "Personal Reasons",
-          "status": "Approved"
-        },
-        {
-          "id": 3,
-          "employeeid": 1,
-          "type": "Sick",
-          "from": "2023-03-03",
-          "to": "2023-03-04",
-          "noofdays": 2,
-          "reason": "Medical Appointment",
-          "status": "Rejected"
-        },
-        {
-          "employeeid": 1,
-          "type": "Emergency",
-          "from": "2023-03-24",
-          "to": "2023-03-24",
-          "noofdays": 0.5,
-          "reason": "Personal Reasons",
-          "status": "Approved",
-          "id": 11
-        }
-      ]
+      "leavedetails": []
     },
     {
       "id": 2,
@@ -142,7 +101,7 @@
       "lastname": "Howell",
       "age": 29,
       "dob": "1991-05-03",
-      "bloodgroup": "O+",
+      "bloodgroup": "A-",
       "gender": "male",
       "email": "henry@gmail.com",
       "contact": "9188721473",
@@ -151,7 +110,7 @@
       "qualification": "Graduation",
       "course": "Btech CSE",
       "university": "Anna University",
-      "percentage": 89,
+      "percentage": "80",
       "department": "HR",
       "designation": "HR Assistant",
       "fb": "https://www.facebook.com",
@@ -165,16 +124,16 @@
       "lastname": "Bauch",
       "age": 24,
       "dob": "1995-07-03",
-      "bloodgroup": "O-",
+      "bloodgroup": "B-",
       "gender": "female",
       "email": "angel@gmail.com",
-      "contact": "9188721473",
+      "contact": "9100721473",
       "address": "12A, Church Road",
       "image": "4.jpg",
       "qualification": "Graduation",
       "course": "Bsc  CSE",
       "university": "Calicut University",
-      "percentage": "87",
+      "percentage": "80",
       "department": "Quality Analysis",
       "designation": "Junior Tester",
       "fb": "https://www.facebook.com",
@@ -226,28 +185,7 @@
       "fb": "https://www.facebook.com",
       "insta": "https://www.instagram.com",
       "linkedin": "https://www.linkedin.com",
-      "leavedetails": [
-        {
-          "id": 5,
-          "employeeid": 5,
-          "type": "Sick",
-          "from": "2023-03-16",
-          "to": "2023-03-18",
-          "noofdays": 3,
-          "reason": "Admitted in hospital",
-          "status": "Approved"
-        },
-        {
-          "id": 10,
-          "employeeid": 5,
-          "type": "Sick",
-          "from": "2023-03-23",
-          "to": "2023-03-24",
-          "noofdays": 2,
-          "reason": "Medical Appointment",
-          "status": "Approved"
-        }
-      ]
+      "leavedetails": []
     },
     {
       "id": 6,
@@ -301,7 +239,7 @@
       "lastname": "DuBuque",
       "age": 24,
       "dob": "1995-04-03",
-      "bloodgroup": "B-",
+      "bloodgroup": "A-",
       "gender": "female",
       "email": "clementina@gmail.com",
       "contact": "9188721473",
@@ -324,7 +262,7 @@
       "lastname": "Dietrich",
       "age": 25,
       "dob": "1996-02-08",
-      "bloodgroup": "AB-",
+      "bloodgroup": "A+",
       "gender": "male",
       "email": "ervin@gmail.com",
       "contact": "9188721473",
@@ -332,7 +270,7 @@
       "image": "3.jpg",
       "qualification": "Graduation",
       "course": "Bsc CSE",
-      "university": "CUSAT",
+      "university": "Cochin University",
       "percentage": 69,
       "department": "Front End Development",
       "designation": "Senior Developer",
@@ -346,7 +284,7 @@
       "firstname": "Leanna",
       "lastname": "Lebsack",
       "age": 27,
-      "dob": "1994-05-03",
+      "dob": "1994-05-05",
       "bloodgroup": "A+",
       "gender": "female",
       "email": "leanna@gmail.com",
@@ -363,6 +301,52 @@
       "insta": "https://www.instagram.com",
       "linkedin": "https://www.linkedin.com",
       "leavedetails": []
+    },
+    {
+      "firstname": "Joel",
+      "lastname": "Joe",
+      "age": "32",
+      "dob": "1990-12-04",
+      "bloodgroup": "A+",
+      "gender": "male",
+      "email": "joel@gmail.com",
+      "contact": "9100721473",
+      "address": "JS Street Road",
+      "image": "2.jpg",
+      "qualification": "Graduation",
+      "course": "Bsc ECE",
+      "university": "Calicut University",
+      "percentage": "73",
+      "department": "Quality Analysis",
+      "designation": "Quality Analyst",
+      "fb": "https://www.facebook.com",
+      "insta": "https://www.instagram.com",
+      "linkedin": "https://www.linkedin.com",
+      "leavedetails": [],
+      "id": 11
+    },
+    {
+      "firstname": "Riya",
+      "lastname": "Kamal",
+      "age": "21",
+      "dob": "2002-11-22",
+      "bloodgroup": "AB-",
+      "gender": "female",
+      "email": "riya@gmail.com",
+      "contact": "9188721480",
+      "address": "Door No.12, SM Sreet",
+      "image": "5.jpg",
+      "qualification": "Graduation",
+      "course": "Bsc Maths",
+      "university": "Cochin University",
+      "percentage": "69",
+      "department": "Security",
+      "designation": "Security Analyst",
+      "fb": "https://www.facebook.com",
+      "insta": "https://www.instagram.com",
+      "linkedin": "https://www.linkedin.com",
+      "leavedetails": [],
+      "id": 12
     }
   ],
   "leavedetails": [
@@ -370,38 +354,38 @@
       "id": 1,
       "employeeid": 1,
       "type": "Sick",
-      "from": "2023-03-14",
-      "to": "2023-03-15",
+      "from": "2023-01-12",
+      "to": "2023-01-13",
       "noofdays": 2,
       "reason": "Medical Appointment",
       "status": "Approved"
     },
     {
       "id": 2,
-      "employeeid": 1,
+      "employeeid": 2,
       "type": "Casual",
-      "from": "2023-03-13",
-      "to": "2023-03-13",
+      "from": "2023-01-26",
+      "to": "2023-01-26",
       "noofdays": 1,
       "reason": "Personal Reasons",
       "status": "Approved"
     },
     {
       "id": 3,
-      "employeeid": 1,
+      "employeeid": 5,
       "type": "Sick",
-      "from": "2023-03-03",
-      "to": "2023-03-04",
+      "from": "2023-02-01",
+      "to": "2023-02-02",
       "noofdays": 2,
       "reason": "Medical Appointment",
-      "status": "Rejected"
+      "status": "Approved"
     },
     {
       "id": 4,
       "employeeid": 4,
       "type": "Casual",
-      "from": "2023-03-03",
-      "to": "2023-03-03",
+      "from": "2023-02-10",
+      "to": "2023-02-10",
       "noofdays": 1,
       "reason": "Personal Reasons",
       "status": "Approved"
@@ -410,8 +394,8 @@
       "id": 5,
       "employeeid": 5,
       "type": "Sick",
-      "from": "2023-03-16",
-      "to": "2023-03-18",
+      "from": "2023-02-16",
+      "to": "2023-02-18",
       "noofdays": 3,
       "reason": "Admitted in hospital",
       "status": "Approved"
@@ -419,12 +403,12 @@
     {
       "id": 6,
       "employeeid": 8,
-      "type": "Sick",
-      "from": "2023-03-15",
-      "to": "2023-03-16",
+      "type": "Casual",
+      "from": "2023-02-15",
+      "to": "2023-02-16",
       "noofdays": 2,
-      "reason": "Medical Appointment",
-      "status": "Approved"
+      "reason": "Personal Reasons",
+      "status": "Rejected"
     },
     {
       "id": 7,
@@ -440,8 +424,8 @@
       "id": 8,
       "employeeid": 10,
       "type": "Sick",
-      "from": "2023-03-10",
-      "to": "2023-03-12",
+      "from": "2023-03-21",
+      "to": "2023-03-23",
       "noofdays": 3,
       "reason": "Admitted in hospital",
       "status": "Approved"
@@ -450,8 +434,8 @@
       "id": 9,
       "employeeid": 10,
       "type": "Sick",
-      "from": "2023-03-28",
-      "to": "2023-03-29",
+      "from": "2023-03-30",
+      "to": "2023-03-31",
       "noofdays": 2,
       "reason": "Medical Appointment",
       "status": "Pending"
@@ -467,7 +451,7 @@
       "status": "Approved"
     },
     {
-      "employeeid": 1,
+      "employeeid": 7,
       "type": "Emergency",
       "from": "2023-03-24",
       "to": "2023-03-24",
@@ -483,17 +467,17 @@
       "to": "2023-03-30",
       "noofdays": 2,
       "reason": "Personal Reasons",
-      "status": "Approved",
+      "status": "Pending",
       "id": 12
     },
     {
-      "employeeid": 3,
+      "employeeid": 9,
       "type": "Sick",
-      "from": "2023-04-06",
-      "to": "2023-04-06",
-      "noofdays": 0.5,
+      "from": "2023-04-13",
+      "to": "2023-04-13",
+      "noofdays": 1,
       "reason": "Medical Appointment",
-      "status": "Rejected",
+      "status": "Approved",
       "id": 13
     }
   ]
