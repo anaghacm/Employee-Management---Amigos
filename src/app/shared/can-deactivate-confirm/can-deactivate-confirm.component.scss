@@ -8,6 +8,9 @@
         font-weight: 600;
     }
 
+    .mat-dialog-content{
+        padding-bottom: $spacer-1;
+    }
     .btn-control {
         background-color: $color-contrasting;
         padding: $spacer-md $spacer-3;

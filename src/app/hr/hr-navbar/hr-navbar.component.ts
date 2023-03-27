@@ -15,7 +15,7 @@ interface sideNavToggle {
 })
 export class HrNavbarComponent implements OnInit, OnDestroy {
 
-  collapsed=true;
+  collapsed=false;
   navData = navbarData;
   screenWidth =0;
   @Output() onToggleSideNav: EventEmitter<sideNavToggle> = new EventEmitter();
@@ -51,7 +51,10 @@ export class HrNavbarComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     //Screen width set to current inner width
     this.screenWidth=window.innerWidth;
-
+    if(this.screenWidth>768){
+      this.collapsed=true
+    }
+    this.onToggleSideNav.emit({collapsed:this.collapsed, screenWidth:this.screenWidth})
     //Refresh the employee information based on db update
     this._api.RefreshRequired.subscribe((response) => {
       this.getEmployeeById();

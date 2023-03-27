@@ -108,7 +108,6 @@ export class CreateFormComponent implements OnInit, OnChanges {
           leavedetails:this.leaveDetails
         }
         this._api.editEmployee(userInfo).subscribe((response) => {
-          console.log(response)
         })
       }
       else {
@@ -136,6 +135,7 @@ export class CreateFormComponent implements OnInit, OnChanges {
           leavedetails:[]
         }
         this._api.addEmployee(userInfo).subscribe((response) => {
+          
           this._snackBar.open("New employee added successfully", "", {
             duration: 2000,
             panelClass: ['success-snackbar']

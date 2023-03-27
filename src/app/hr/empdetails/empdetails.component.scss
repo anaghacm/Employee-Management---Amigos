@@ -26,7 +26,6 @@
 
         .image-div {
             width: 250px;
-            // z-index: -1;
         }
 
 
@@ -51,7 +50,7 @@
                 width: 100%;
                 height: 200px;
                 background-color: $color-contrasting;
-                transform: rotate(30deg);
+                transform: rotate(32deg);
                 
             }
             &:hover::before{

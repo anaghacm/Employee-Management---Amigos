@@ -12,12 +12,12 @@
       "username": "henry",
       "password": "def",
       "category": "hr",
-      "active": 1
+      "active": 0
     },
     {
       "id": 3,
       "username": "angel",
-      "password": "ggg",
+      "password": "ghi",
       "category": "emp",
       "active": 0
     },
@@ -78,7 +78,7 @@
       "lastname": "Graham",
       "age": "28",
       "dob": "1992-04-03",
-      "bloodgroup": "A-",
+      "bloodgroup": "A+",
       "gender": "male",
       "email": "john@gmail.com",
       "contact": "9188721480",
@@ -87,7 +87,7 @@
       "qualification": "Post Graduation",
       "course": "ME CSE",
       "university": "CUSAT",
-      "percentage": "80",
+      "percentage": "82",
       "department": "Front End Development",
       "designation": "Associate Engineer",
       "fb": "https://www.facebook.com",
@@ -124,10 +124,10 @@
       "lastname": "Bauch",
       "age": 24,
       "dob": "1995-07-03",
-      "bloodgroup": "B-",
+      "bloodgroup": "B+",
       "gender": "female",
       "email": "angel@gmail.com",
-      "contact": "9100721473",
+      "contact": "9100721479",
       "address": "12A, Church Road",
       "image": "4.jpg",
       "qualification": "Graduation",
@@ -434,11 +434,11 @@
       "id": 9,
       "employeeid": 10,
       "type": "Sick",
-      "from": "2023-03-30",
-      "to": "2023-03-31",
+      "from": "2023-03-20",
+      "to": "2023-03-21",
       "noofdays": 2,
       "reason": "Medical Appointment",
-      "status": "Pending"
+      "status": "Approved"
     },
     {
       "id": 10,
@@ -479,6 +479,16 @@
       "reason": "Medical Appointment",
       "status": "Approved",
       "id": 13
+    },
+    {
+      "employeeid": 3,
+      "type": "Casual",
+      "from": "2023-04-06",
+      "to": "2023-04-07",
+      "noofdays": 2,
+      "reason": "Personal Reasons",
+      "status": "Rejected",
+      "id": 14
     }
   ]
 }
