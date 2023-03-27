@@ -116,8 +116,6 @@ export class GaugeChartComponent implements OnInit {
       ))
       .attr('fill', (d: any) => d.color)
 
-    // this.svg.node();
-
   }
 
   //Function to convert degree to radius
