@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { config } from 'rxjs';
 import { ApiService } from 'src/app/services/api.service';
 import { D3ServiceService } from '../hr-services/d3-service.service';
-import { DoughnutData } from '../hr-services/doughnut-data';
 
 @Component({
   selector: 'app-gauge-chart',
@@ -63,7 +61,7 @@ export class GaugeChartComponent implements OnInit {
       ]);
 
     //Finding the radius
-    const radius = Math.floor(Math.min(this.width, this.height) / 2) - 2;
+    const radius = Math.floor(Math.min(this.width, this.height) / 2);
 
     //Arc generator
     const arc = this.d3.d3.arc()
@@ -91,14 +89,12 @@ export class GaugeChartComponent implements OnInit {
         .attr('x', -2)
         .attr('y', -this.height * .35)
         .attr('width', 4)
-        .attr('height', this.height * .35)
+        .attr('height', this.height * .45)
       )
-      // .attr('transform', `rotate(scale(1))`)
       .transition()
       .ease(this.d3.d3.easeElastic.amplitude(2).period(0.2))
       .duration(3000)
       .attr('transform', `rotate(${scale(this.productivity * maxValue)})`);
-
 
     //Inner arc
     inner
@@ -156,8 +152,8 @@ export class GaugeChartComponent implements OnInit {
       }
 
       //Calculate productivity
-      let totalWorkingDays = 132;
-      this.productivity=((totalWorkingDays-this.totalLeaveDays)*9) / (totalWorkingDays*9);
+      let totalWorkingDays = 132;     //22 days per month, for 6 months
+      this.productivity=((totalWorkingDays-this.totalLeaveDays)) / (totalWorkingDays);
       
       //Calling gauge chart function
       this.drawGauge();

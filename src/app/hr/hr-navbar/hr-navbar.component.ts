@@ -27,7 +27,7 @@ export class HrNavbarComponent implements OnInit, OnDestroy {
 
   public currentUser!: any;
   public userInfo: any={
-    image:''
+    image:'1.jpg'       //Some default value
   };
 
   constructor(private _router:Router, private _api: ApiService) { 

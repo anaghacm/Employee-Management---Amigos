@@ -15,7 +15,7 @@ export class EmpNavbarComponent implements OnInit, OnDestroy {
 
   public currentUser!: any;
   public userInfo: any = {
-    image: ''
+    image: '1.jpg'    //some default data
   };
 
   constructor(private _router: Router, private _api: ApiService) {

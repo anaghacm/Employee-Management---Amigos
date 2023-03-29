@@ -30,7 +30,6 @@ export class LoginComponent implements OnInit {
       let username = this.loginForm.value.username;
       let password = this.loginForm.value.password;
       this._api.getUsers(username).subscribe((response: any) => {
-        console.log(response)
         let user =response[0]
         if (user.password == password) {
           user.active=1;

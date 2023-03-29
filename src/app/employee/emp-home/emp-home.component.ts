@@ -14,7 +14,7 @@ export class EmpHomeComponent implements OnInit {
 
   public currentUser!: any;
   public userInfo: any = {
-    image: ''
+    image: '1.jpg'      //some default data
   };
 
   faPhoneAlt = faPhoneAlt;

@@ -1,6 +1,4 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-import { DoughnutData } from './doughnut-data';
 import * as d3 from 'd3';
 
 

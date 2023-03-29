@@ -24,11 +24,10 @@ export class D3DoughnutComponent implements OnInit {
   private svg: any;
   private colors: any;
   constructor(private d3: D3ServiceService, private _api: ApiService) {
-    this.getCount();
   }
 
   ngOnInit(): void {
-    
+    this.getCount();
   }
 
   getCount() {

@@ -5,7 +5,7 @@
       "username": "john",
       "password": "abc",
       "category": "emp",
-      "active": 1
+      "active": 0
     },
     {
       "id": 2,
@@ -26,7 +26,7 @@
       "username": "frank",
       "password": "jkl",
       "category": "emp",
-      "active": 0
+      "active": 1
     },
     {
       "id": 5,
@@ -122,14 +122,14 @@
       "id": 3,
       "firstname": "Angel",
       "lastname": "Bauch",
-      "age": 24,
+      "age": "30",
       "dob": "1995-07-03",
-      "bloodgroup": "B+",
+      "bloodgroup": "A-",
       "gender": "female",
-      "email": "angel@gmail.com",
+      "email": "angel1@gmail.com",
       "contact": "9100721479",
       "address": "12A, Church Road",
-      "image": "4.jpg",
+      "image": "6.jpg",
       "qualification": "Graduation",
       "course": "Bsc  CSE",
       "university": "Calicut University",
@@ -467,7 +467,7 @@
       "to": "2023-03-30",
       "noofdays": 2,
       "reason": "Personal Reasons",
-      "status": "Pending",
+      "status": "Approved",
       "id": 12
     },
     {
@@ -489,6 +489,16 @@
       "reason": "Personal Reasons",
       "status": "Rejected",
       "id": 14
+    },
+    {
+      "employeeid": 3,
+      "type": "Sick",
+      "from": "2023-04-06",
+      "to": "2023-04-06",
+      "noofdays": 1,
+      "reason": "Medical Appointment",
+      "status": "Approved",
+      "id": 15
     }
   ]
 }
