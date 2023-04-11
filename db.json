@@ -124,12 +124,12 @@
       "lastname": "Bauch",
       "age": "30",
       "dob": "1995-07-03",
-      "bloodgroup": "A-",
+      "bloodgroup": "B-",
       "gender": "female",
       "email": "angel1@gmail.com",
       "contact": "9100721479",
       "address": "12A, Church Road",
-      "image": "6.jpg",
+      "image": "4.jpg",
       "qualification": "Graduation",
       "course": "Bsc  CSE",
       "university": "Calicut University",
@@ -499,6 +499,16 @@
       "reason": "Medical Appointment",
       "status": "Approved",
       "id": 15
+    },
+    {
+      "employeeid": 1,
+      "type": "Sick",
+      "from": "2023-03-31",
+      "to": "2023-04-01",
+      "noofdays": 2,
+      "reason": "Medical Appointment",
+      "status": "Pending",
+      "id": 16
     }
   ]
 }

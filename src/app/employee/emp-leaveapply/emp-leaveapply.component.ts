@@ -105,8 +105,6 @@ export class EmpLeaveapplyComponent implements OnInit {
 
   //Disable/enable day length option based on date selection
   checkDate() {
-    var x=1;
-    let y=2;
     
     if(this.leaveApplicationForm.value.startdate){
       this.enddateMin=this.leaveApplicationForm.value.startdate;
